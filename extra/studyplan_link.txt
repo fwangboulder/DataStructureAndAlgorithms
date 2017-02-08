@@ -1,0 +1,19 @@
+http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=97510&extra=page%3D1%26filter%3Dsortid%26sortid%3D309%26sortid%3D309
+
+
+https://www.coursera.org/learn/algorithms-part1
+
+How to use Google app engine:
+
+dev_appserver.py ./
+
+gcloud config set project homework-153002
+gcloud beta app create
+appcfg.py update homework/
+
+
+https://homework2-156201.appspot.com/signup
+
+https://homework1-156122.appspot.com/rot13
+
+You built a webapp that responds to user input and redirects the user!
