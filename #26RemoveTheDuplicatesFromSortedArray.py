@@ -30,6 +30,27 @@ class Solution(object):
                 print start+2,nums[:start+1],nums[start+2:]
                 nums=nums[:start+1]+nums[start+2:]
 
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        if len(nums) <= 1:
+            return len(nums)
+        else:
+            head, tail = 1, 0
+            while head < len(nums):
+                if nums[head] == nums[tail]:
+                    head += 1
+                elif head - tail == 1:
+                    tail, head = tail + 1, head + 1
+                else:
+                    nums[tail + 1] = nums[head]
+                    tail, head = tail + 1, head + 1
+        return tail + 1
+
 
             start+=1
 
