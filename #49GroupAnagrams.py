@@ -20,22 +20,24 @@ Hide Company Tags Amazon Bloomberg Uber Facebook Yelp
 Hide Tags Hash Table String
 Hide Similar Problems (E) Valid Anagram (M) Group Shifted Strings
 """
+
+
 class Solution(object):
+
     def groupAnagrams(self, strs):
         """
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-        d={}
+        d = {}
         for s in strs:
-            lst=list(s)
-            lst.sort()
-            lst=tuple(lst)
+            lst = sorted(s)
+            lst = tuple(lst)
             if lst in d:
                 d[lst].append(s)
             else:
-                d[lst]=[s]
-        res=[]
+                d[lst] = [s]
+        res = []
         for i in d.values():
             res.append(i)
         return res

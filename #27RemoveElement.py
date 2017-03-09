@@ -24,7 +24,9 @@ Hide Tags Array Two Pointers
 Hide Similar Problems (E) Remove Duplicates from Sorted Array (E) Remove Linked List Elements (E) Move Zeroes
 """
 
+
 class Solution(object):
+
     def removeElement(self, nums, val):
         """
         :type nums: List[int]
@@ -32,11 +34,10 @@ class Solution(object):
         :rtype: int
         """
 
-        start=0
-        n=len(nums)
+        start = 0
+        n = len(nums)
         for i in range(n):
-            if nums[i]!=val:
-                nums[start]=nums[i]
-                start+=1
+            if nums[i] != val:
+                nums[start] = nums[i]
+                start += 1
         return start
-                

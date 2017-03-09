@@ -13,27 +13,30 @@ Hide Tags Binary Search Math
 Hide Similar Problems (M) Pow(x, n) (E) Valid Perfect Square
 
 """
+
+
 class Solution(object):
+
     def mySqrt(self, x):
         """
         :type x: int
         :rtype: int
         """
-        start=0
-        end=x
-        while start+1<end:
-            mid=start+(end-start)/2
-            if mid*mid>x:
-                end=mid
-            elif (mid+1)*(mid+1)<x:
-                start=mid
-            elif mid*mid==x:
+        start = 0
+        end = x
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            if mid * mid > x:
+                end = mid
+            elif (mid + 1) * (mid + 1) < x:
+                start = mid
+            elif mid * mid == x:
                 return mid
-            elif (mid+1)*(mid+1)==x:
-                return mid+1
+            elif (mid + 1) * (mid + 1) == x:
+                return mid + 1
             else:
                 return mid
-        if start*start==x:
+        if start * start == x:
             return start
-        elif end*end==x:
+        elif end * end == x:
             return end

@@ -22,47 +22,50 @@ Hide Tags Math String
 Hide Similar Problems (M) String to Integer (atoi)
 
 """
+
+
 class Solution(object):
+
     def isNumber(self, s):
         """
         :type s: str
         :rtype: bool
         """
-        s=s.strip() #remove start and end space
+        s = s.strip()  # remove start and end space
         if not s:
             return False
-        n=len(s)
-        i=0
-        dotFlag=False
-        eFlag=False
-        hasDigit=False
-        hasSign=False
-        while i<n:
-            #is digit, means pass the sign location
+        n = len(s)
+        i = 0
+        dotFlag = False
+        eFlag = False
+        hasDigit = False
+        hasSign = False
+        while i < n:
+            # is digit, means pass the sign location
             if s[i].isdigit():
-                i+=1
-                hasDigit=True
-                hasSign=True
-            #is dot, means pass the sign location
-            elif not dotFlag and s[i]=='.':
-                i+=1
-                dotFlag=True
-                hasSign=True
-            #only when pass first digit, e can start, after e start, can has new sign and new digit, but has no dot
-            elif hasDigit and not eFlag and (s[i]=='e' or s[i]=='E'):
-                i+=1
-                dotFlag=True
-                eFlag=True
-                hasDigit=False
-                hasSign=False
+                i += 1
+                hasDigit = True
+                hasSign = True
+            # is dot, means pass the sign location
+            elif not dotFlag and s[i] == '.':
+                i += 1
+                dotFlag = True
+                hasSign = True
+            # only when pass first digit, e can start, after e start, can has
+            # new sign and new digit, but has no dot
+            elif hasDigit and not eFlag and (s[i] == 'e' or s[i] == 'E'):
+                i += 1
+                dotFlag = True
+                eFlag = True
+                hasDigit = False
+                hasSign = False
             # no digit and no sign, sign flag can start
-            elif not hasDigit and not hasSign and (s[i]=='+' or s[i]=='-'):
-                i+=1
-                hasSign=True
+            elif not hasDigit and not hasSign and (s[i] == '+' or s[i] == '-'):
+                i += 1
+                hasSign = True
             else:
                 return False
         if hasDigit:
             return True
         else:
             return False
-        

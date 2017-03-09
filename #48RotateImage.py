@@ -16,7 +16,10 @@ Hide Tags Array
 Have you met this question in a real interview? Yes
 """
 # in place
+
+
 class Solution(object):
+
     def rotate(self, matrix):
         """
         :type matrix: List[List[int]]
@@ -31,4 +34,3 @@ class Solution(object):
 
         for i in range(n):
             matrix[i] = matrix[i][::-1]
-        

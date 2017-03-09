@@ -22,7 +22,9 @@ Hide Similar Problems (H) Insert Interval (E) Meeting Rooms (M) Meeting Rooms II
 #         self.start = s
 #         self.end = e
 
+
 class Solution(object):
+
     def merge(self, intervals):
         """
         :type intervals: List[Interval]

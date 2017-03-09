@@ -30,34 +30,36 @@ Hide Similar Problems (E) Swap Nodes in Pairs
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def reverseKGroup(self, head, k):
         """
         :type head: ListNode
         :type k: int
         :rtype: ListNode
         """
-        if not self.check(head,k):
+        if not self.check(head, k):
             return head
 
-        dummy=ListNode(0)
-        pre=dummy
-        while self.check(head,k):
-            tmp=head
-            rev=None
+        dummy = ListNode(0)
+        pre = dummy
+        while self.check(head, k):
+            tmp = head
+            rev = None
             for i in xrange(k):
-                q=head.next
-                head.next=rev
-                rev=head
-                head=q
-            pre.next=rev
-            tmp.next=head
-            pre=tmp
+                q = head.next
+                head.next = rev
+                rev = head
+                head = q
+            pre.next = rev
+            tmp.next = head
+            pre = tmp
         return dummy.next
 
-    def check(self,head,k):
-        tmp=head
+    def check(self, head, k):
+        tmp = head
         while k and tmp:
-            k-=1
-            tmp=tmp.next
-        return k==0
+            k -= 1
+            tmp = tmp.next
+        return k == 0

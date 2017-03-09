@@ -18,19 +18,22 @@ Hide Company Tags Amazon Adobe Bloomberg Yelp
 Hide Tags Hash Table Two Pointers String
 Hide Similar Problems (H) Longest Substring with At Most Two Distinct Characters
 """
+
+
 class Solution(object):
+
     def lengthOfLongestSubstring(self, s):
         """
         :type s: str
         :rtype: int
         """
-        d=dict()
-        start=0
-        maxl=0
-        for i,num in enumerate(s):
-            if num in d and start<=d[num]:
-                start=d[num]+1
+        d = dict()
+        start = 0
+        maxl = 0
+        for i, num in enumerate(s):
+            if num in d and start <= d[num]:
+                start = d[num] + 1
             else:
-                maxl=max(maxl,i-start+1)
-            d[num]=i
+                maxl = max(maxl, i - start + 1)
+            d[num] = i
         return maxl

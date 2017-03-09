@@ -16,7 +16,10 @@ Hide Tags Backtracking
 Hide Similar Problems (M) Combination Sum (M) Permutations
 
 """
+
+
 class Solution(object):
+
     def combine(self, n, k):
         """
         :type n: int
@@ -31,7 +34,7 @@ class Solution(object):
         if depth == k:
             return [[start]]
         r = []
-        for i in range(start + 1, n  + 1 - (k - depth - 1)):
+        for i in range(start + 1, n + 1 - (k - depth - 1)):
             t = self.myCombine(i, n, depth + 1, k)
             if start == 0:
                 r += t
@@ -40,4 +43,3 @@ class Solution(object):
                     p = [start] + p
                     r.append(p)
         return r
-    

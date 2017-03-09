@@ -26,20 +26,24 @@ Hide Company Tags Amazon
 Hide Tags Backtracking
 
 """
+
+
 class Solution(object):
+
     def grayCode(self, n):
         """
         :type n: int
         :rtype: List[int]
         """
-        if n==0: return [0]
+        if n == 0:
+            return [0]
         return self.back(n)
 
     def back(self, n):
-        if n==1:
-            return [0,1]
+        if n == 1:
+            return [0, 1]
         cur = []
-        pre= self.back(n-1)
-        for x in xrange(len(pre)-1,-1,-1):
-            cur.append(2**(n-1)+pre[x])
-        return pre+cur
+        pre = self.back(n - 1)
+        for x in xrange(len(pre) - 1, -1, -1):
+            cur.append(2**(n - 1) + pre[x])
+        return pre + cur

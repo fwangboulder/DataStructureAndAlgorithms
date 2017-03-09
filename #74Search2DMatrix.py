@@ -25,7 +25,9 @@ Hide Similar Problems (M) Search a 2D Matrix II
 
 """
 
+
 class Solution(object):
+
     def searchMatrix(self, matrix, target):
         """
         :type matrix: List[List[int]]
@@ -36,24 +38,24 @@ class Solution(object):
             return False
         if not matrix[0]:
             return False
-        m=len(matrix)
-        n=len(matrix[0])
-        total=m*n
-        start=0
-        end=m*n-1
-        mid=start+(end-start)/2
-        while start+1<end:
-            mid=start+(end-start)/2
+        m = len(matrix)
+        n = len(matrix[0])
+        total = m * n
+        start = 0
+        end = m * n - 1
+        mid = start + (end - start) / 2
+        while start + 1 < end:
+            mid = start + (end - start) / 2
 
-            if matrix[mid/n][mid%n]==target:
+            if matrix[mid / n][mid % n] == target:
                 return True
-            elif matrix[mid/n][mid%n]<target:
-                start=mid+1
+            elif matrix[mid / n][mid % n] < target:
+                start = mid + 1
             else:
-                end=mid
-        if matrix[start/n][start%n]==target:
+                end = mid
+        if matrix[start / n][start % n] == target:
             return True
-        if matrix[end/n][end%n]==target:
+        if matrix[end / n][end % n] == target:
             return True
 
         return False

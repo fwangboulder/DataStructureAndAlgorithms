@@ -23,27 +23,29 @@ Hide Tags Linked List Two Pointers
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def partition(self, head, x):
         """
         :type head: ListNode
         :type x: int
         :rtype: ListNode
         """
-        left=ListNode(0)
-        right=ListNode(0)
-        cur1=left
-        cur2=right
+        left = ListNode(0)
+        right = ListNode(0)
+        cur1 = left
+        cur2 = right
         while head:
-            if head.val<x:
-                cur1.next=ListNode(head.val)
-                head=head.next
-                cur1=cur1.next
+            if head.val < x:
+                cur1.next = ListNode(head.val)
+                head = head.next
+                cur1 = cur1.next
             else:
-                cur2.next=ListNode(head.val)
-                head=head.next
-                cur2=cur2.next
+                cur2.next = ListNode(head.val)
+                head = head.next
+                cur2 = cur2.next
 
         if right.next:
-            cur1.next=right.next
+            cur1.next = right.next
         return left.next

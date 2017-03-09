@@ -34,7 +34,9 @@ Hide Similar Problems (M) Binary Tree Inorder Traversal (E) Find Mode in Binary 
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+
     def isValidBST(self, root):
         """
         :type root: TreeNode
@@ -44,7 +46,7 @@ class Solution(object):
         self.inOrder(root, output)
 
         for i in range(1, len(output)):
-            if output[i-1] >= output[i]:
+            if output[i - 1] >= output[i]:
                 return False
 
         return True
@@ -55,4 +57,4 @@ class Solution(object):
 
         self.inOrder(root.left, output)
         output.append(root.val)
-        self.inOrder(root.right, output)       
+        self.inOrder(root.right, output)

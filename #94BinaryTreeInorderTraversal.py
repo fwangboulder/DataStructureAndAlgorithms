@@ -30,7 +30,9 @@ Hide Similar Problems (M) Validate Binary Search Tree (M) Binary Tree Preorder T
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -47,7 +49,7 @@ class Solution(object):
             res.append(root.val)
             self.helper(root.right, res)
 
-#Method 2
+# Method 2
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -55,15 +57,20 @@ class Solution(object):
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
 
-        if root == None: return []
-        r = []; st = []; node = root
+        if root is None:
+            return []
+        r = []
+        st = []
+        node = root
         st.append(root)
         while st:
             while node and node.left:
@@ -72,5 +79,6 @@ class Solution(object):
             node = st.pop()
             r.append(node.val)
             node = node.right
-            if node: st.append(node)
+            if node:
+                st.append(node)
         return r

@@ -15,7 +15,10 @@ Hide Tags Array Math
 Hide Similar Problems (M) Multiply Strings (E) Add Binary (M) Plus One Linked List
 
 """
+
+
 class Solution(object):
+
     def plusOne(self, digits):
         """
         :type digits: List[int]
@@ -23,16 +26,16 @@ class Solution(object):
         """
         if not digits:
             return
-        n=len(digits)
-        i=len(digits)-1
-        while i>=0:
+        n = len(digits)
+        i = len(digits) - 1
+        while i >= 0:
 
-            if digits[i]!=9:
-                digits[i]+=1
+            if digits[i] != 9:
+                digits[i] += 1
                 return digits
             else:
-                digits[i]=0
-                i-=1
-        if i==-1:
-            digits.insert(0,1)
+                digits[i] = 0
+                i -= 1
+        if i == -1:
+            digits.insert(0, 1)
         return digits

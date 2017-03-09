@@ -15,21 +15,25 @@ Your algorithm should run in O(n) time and uses constant space.
 Hide Tags Array
 Hide Similar Problems (E) Missing Number (M) Find the Duplicate Number (E) Find All Numbers Disappeared in an Array
 """
+
+
 class Solution(object):
+
     def firstMissingPositive(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        start,end=0,len(nums)-1
-        while start<=end:
-            index=nums[start]-1
-            if index==start:
-                start+=1
-            elif index<0 or index>end or nums[start]==nums[index]: #nums[start] is not valid, moves nums[end] to start, end-=1
-                nums[start]=nums[end]
-                end-=1
-            else: #swap nums[start] and nums[index]
-                nums[start]=nums[index]
-                nums[index]=index+1
-        return start+1
+        start, end = 0, len(nums) - 1
+        while start <= end:
+            index = nums[start] - 1
+            if index == start:
+                start += 1
+            # nums[start] is not valid, moves nums[end] to start, end-=1
+            elif index < 0 or index > end or nums[start] == nums[index]:
+                nums[start] = nums[end]
+                end -= 1
+            else:  # swap nums[start] and nums[index]
+                nums[start] = nums[index]
+                nums[index] = index + 1
+        return start + 1

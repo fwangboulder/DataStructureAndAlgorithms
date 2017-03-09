@@ -19,7 +19,10 @@ Hide Tags Array
 Hide Similar Problems (M) Game of Life
 
 """
+
+
 class Solution(object):
+
     def setZeroes(self, matrix):
         """
         :type matrix: List[List[int]]
@@ -28,29 +31,27 @@ class Solution(object):
 
         if not matrix:
             return matrix
-        m=len(matrix)
-        n=len(matrix[0])
-        if n==0:
+        m = len(matrix)
+        n = len(matrix[0])
+        if n == 0:
             return matrix
-        i=0
-        row=set()
-        col=set()
-        while i<m:
-            j=0
-            while j<n:
-                #print m,n,i,j,matrix[i][j]
-                if matrix[i][j]==0:
+        i = 0
+        row = set()
+        col = set()
+        while i < m:
+            j = 0
+            while j < n:
+                # print m,n,i,j,matrix[i][j]
+                if matrix[i][j] == 0:
                     row.add(i)
                     col.add(j)
 
-                j+=1
-            i+=1
+                j += 1
+            i += 1
         print row, col
         for i in row:
             for j in range(n):
-                matrix[i][j]=0
+                matrix[i][j] = 0
         for j in col:
             for i in range(m):
-                matrix[i][j]=0
-
-                
+                matrix[i][j] = 0

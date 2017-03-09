@@ -17,17 +17,19 @@ Hide Company Tags Facebook
 Hide Tags Array Two Pointers
 """
 
+
 class Solution(object):
+
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        if len(nums) <3:
+        if len(nums) < 3:
             return len(nums)
         tail = 1
-        for i in range(2,len(nums)):
-            if nums[tail] != nums[i] or nums[tail] !=nums[tail-1]:
-                tail = tail +1
+        for i in range(2, len(nums)):
+            if nums[tail] != nums[i] or nums[tail] != nums[tail - 1]:
+                tail = tail + 1
                 nums[tail] = nums[i]
-        return tail+1
+        return tail + 1

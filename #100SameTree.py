@@ -20,7 +20,9 @@ Hide Tags Tree Depth-first Search
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+
     def isSameTree(self, p, q):
         """
         :type p: TreeNode
@@ -31,9 +33,9 @@ class Solution(object):
             return True
         elif p and q:
 
-                return p.val==q.val and self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+            return p.val == q.val and self.isSameTree(
+                p.left, q.left) and self.isSameTree(
+                p.right, q.right)
 
         else:
             return False
-
-            

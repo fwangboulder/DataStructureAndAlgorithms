@@ -20,40 +20,42 @@ Hide Tags Array Two Pointers
 Hide Similar Problems (E) Two Sum (M) 3Sum Closest (M) 4Sum (M) 3Sum Smaller
 Have
 """
+
+
 class Solution(object):
+
     def threeSum(self, nums):
         """
         :type nums: List[int]
         :rtype: List[List[int]]
         """
         nums.sort()
-        res=[]
-        for i,v in enumerate(nums):
-            if i!=0 and nums[i]==nums[i-1]:
+        res = []
+        for i, v in enumerate(nums):
+            if i != 0 and nums[i] == nums[i - 1]:
                 continue
-            tmp=nums[i]
+            tmp = nums[i]
 
-            li=i+1
-            ri=len(nums)-1
-            while li<ri:
-                sums=tmp+nums[li]+nums[ri]
-                if sums==0:
-                    res.append([tmp,nums[li],nums[ri]])
-                    li+=1
-                    ri-=1
-                    while li<ri and  nums[ri]==nums[ri+1]:
-                        ri-=1
-                    while li<ri and nums[li]==nums[li-1]:
-                        li+=1
+            li = i + 1
+            ri = len(nums) - 1
+            while li < ri:
+                sums = tmp + nums[li] + nums[ri]
+                if sums == 0:
+                    res.append([tmp, nums[li], nums[ri]])
+                    li += 1
+                    ri -= 1
+                    while li < ri and nums[ri] == nums[ri + 1]:
+                        ri -= 1
+                    while li < ri and nums[li] == nums[li - 1]:
+                        li += 1
 
-                elif sums>0:
-                    ri-=1
-                    while li<ri and nums[ri]==nums[ri+1]:
-                        ri-=1
+                elif sums > 0:
+                    ri -= 1
+                    while li < ri and nums[ri] == nums[ri + 1]:
+                        ri -= 1
                 else:
-                    li+=1
-                    while li<ri and nums[li]==nums[li-1]:
-                        li+=1
+                    li += 1
+                    while li < ri and nums[li] == nums[li - 1]:
+                        li += 1
 
         return res
-                    

@@ -19,24 +19,26 @@ Hide Tags String
 Hide Similar Problems (M) Encode and Decode Strings
 
 """
+
+
 class Solution(object):
+
     def countAndSay(self, n):
         """
         :type n: int
         :rtype: str
         """
-        s='1'
-        for i in range(n-1):
-            ns=prev=''
-            count=0
+        s = '1'
+        for i in range(n - 1):
+            ns = prev = ''
+            count = 0
             for q in s:
-                if prev!='' and q!=prev:
-                    ns+=str(count)+prev
-                    count=1
+                if prev != '' and q != prev:
+                    ns += str(count) + prev
+                    count = 1
                 else:
-                    count+=1
-                prev=q
-            ns+=str(count)+prev
-            s=ns
+                    count += 1
+                prev = q
+            ns += str(count) + prev
+            s = ns
         return s
-        

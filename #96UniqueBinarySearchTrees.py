@@ -29,7 +29,9 @@ Although it will give you correct answer, it will exceed time limit
 
 """
 
+
 class Solution(object):
+
     def numTrees(self, n):
         """
         :type n: int
@@ -42,12 +44,12 @@ class Solution(object):
             return 1
         if n == 2:
             return 2
-        num = [0]*(n+1)
-        num[0:3] = [0,1,2]
+        num = [0] * (n + 1)
+        num[0:3] = [0, 1, 2]
 
-        for i in range(3,n+1):
-            for j in range(2,i):
-                num[i] += num[j-1]*num[i-j]
-            num[i] += num[i-1]*2
+        for i in range(3, n + 1):
+            for j in range(2, i):
+                num[i] += num[j - 1] * num[i - j]
+            num[i] += num[i - 1] * 2
 
         return num[n]

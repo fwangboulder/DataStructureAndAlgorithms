@@ -19,7 +19,10 @@ Hide Tags Array
 Hide Similar Problems (M) Permutations (M) Permutations II (M) Permutation Sequence (M) Palindrome Permutation II
 
 """
+
+
 class Solution(object):
+
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
@@ -29,15 +32,15 @@ class Solution(object):
         size = len(nums)
         for x in range(size - 1, -1, -1):
             if nums[x - 1] < nums[x]:
-                break  #from right to left, find the first descending value as pivot
+                break  # from right to left, find the first descending value as pivot
         if x > 0:
             for y in range(size - 1, -1, -1):
                 if nums[y] > nums[x - 1]:
                     nums[x - 1], nums[y] = nums[y], nums[x - 1]
-                    break #from right to left, find the first value larget than pivot
-        while x<size-1:  #reverse the order of nums[x:]
-            tmp=nums[x]
-            nums[x]=nums[size-1]
-            nums[size-1]=tmp
-            x+=1
-            size-=1
+                    break  # from right to left, find the first value larget than pivot
+        while x < size - 1:  # reverse the order of nums[x:]
+            tmp = nums[x]
+            nums[x] = nums[size - 1]
+            nums[size - 1] = tmp
+            x += 1
+            size -= 1

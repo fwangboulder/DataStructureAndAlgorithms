@@ -28,7 +28,9 @@ while count==0:
     resLen=i-start+1
 """
 
+
 class Solution(object):
+
     def minWindow(self, s, t):
         """
         :type s: str
@@ -55,13 +57,13 @@ class Solution(object):
             if m[s[end]] == 0:
                 count -= 1
             while count == 0:
-                print m,ans
+                print m, ans
                 if end - start + 1 < ansLen:
-                    ansLen = end-start+1
-                    ans = s[start:end+1]
+                    ansLen = end - start + 1
+                    ans = s[start:end + 1]
                 startC = s[start]
                 start += 1
-                print startC,start
+                print startC, start
                 if startC not in m:
                     continue
                 m[startC] += 1

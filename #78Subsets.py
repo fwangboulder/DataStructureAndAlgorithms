@@ -27,7 +27,10 @@ Hide Tags Array Backtracking Bit Manipulation
 Hide Similar Problems (M) Generalized Abbreviation
 backpacking
 """
+
+
 class Solution(object):
+
     def subsets(self, nums):
         """
         :type nums: List[int]
@@ -35,13 +38,13 @@ class Solution(object):
         """
 
         nums.sort()
-        ans,stack,x,n=[[]],[],0,len(nums)
+        ans, stack, x, n = [[]], [], 0, len(nums)
         while True:
-            if x<n:
-                stack+=[(x,nums[x])]
-                ans+=[zip(*stack)[1]]
-                x+=1
+            if x < n:
+                stack += [(x, nums[x])]
+                ans += [zip(*stack)[1]]
+                x += 1
             elif stack:
-                x=stack.pop()[0]+1
+                x = stack.pop()[0] + 1
             else:
                 return ans

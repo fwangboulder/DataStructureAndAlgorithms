@@ -17,7 +17,10 @@ Hide Company Tags LinkedIn Microsoft
 Hide Tags Backtracking
 Hide Similar Problems (M) Next Permutation (M) Permutations (M) Palindrome Permutation II
 """
+
+
 class Solution(object):
+
     def permuteUnique(self, nums):
         """
         :type nums: List[int]
@@ -25,7 +28,7 @@ class Solution(object):
         """
         # DFS
 
-        res, visited = [], [False]*len(nums)
+        res, visited = [], [False] * len(nums)
         nums.sort()
         self.dfs(nums, visited, [], res)
         return res
@@ -36,8 +39,12 @@ class Solution(object):
             return
         for i in xrange(len(nums)):
             if not visited[i]:
-                if i>0 and not visited[i-1] and nums[i] == nums[i-1]:  # here should pay attention
+                if i > 0 and not visited[
+                        i -
+                        1] and nums[i] == nums[
+                        i -
+                        1]:  # here should pay attention
                     continue
                 visited[i] = True
-                self.dfs(nums, visited, path+[nums[i]], res)
+                self.dfs(nums, visited, path + [nums[i]], res)
                 visited[i] = False

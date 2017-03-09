@@ -25,7 +25,9 @@ Hide Similar Problems (M) Combination Sum
 
 """
 
+
 class Solution(object):
+
     def combinationSum2(self, candidates, target):
         """
         :type candidates: List[int]
@@ -35,17 +37,17 @@ class Solution(object):
         if not candidates:
             return []
         candidates.sort()
-        res=[]
-        path=[]
-        index=0
-        self.dfs(candidates,target,res,path,index)
+        res = []
+        path = []
+        index = 0
+        self.dfs(candidates, target, res, path, index)
         return res
-    def dfs(self,nums,target,res,path,index):
-        if target==0 and path not in res:
+
+    def dfs(self, nums, target, res, path, index):
+        if target == 0 and path not in res:
             res.append(path)
             return
-        for i in range(index,len(nums)):
-            if target<nums[i]:
+        for i in range(index, len(nums)):
+            if target < nums[i]:
                 break
-            self.dfs(nums,target-nums[i],res,path+[nums[i]],i+1)
-        
+            self.dfs(nums, target - nums[i], res, path + [nums[i]], i + 1)

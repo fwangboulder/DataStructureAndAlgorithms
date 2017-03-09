@@ -20,28 +20,30 @@ Contributors: Admin
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
         """
-        carry=0
-        n=head=ListNode(0)
+        carry = 0
+        n = head = ListNode(0)
         while l1 or l2 or carry:
-            v=0
+            v = 0
             if l1:
-                v+=l1.val
-                l1=l1.next
+                v += l1.val
+                l1 = l1.next
             if l2:
-                v+=l2.val
-                l2=l2.next
+                v += l2.val
+                l2 = l2.next
             if carry:
-                v+=carry
-            carry=v/10
-            v%=10
-            #print v
-            n.next=ListNode(v)
-            n=n.next
+                v += carry
+            carry = v / 10
+            v %= 10
+            # print v
+            n.next = ListNode(v)
+            n = n.next
         return head.next

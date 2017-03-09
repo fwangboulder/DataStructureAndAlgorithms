@@ -21,7 +21,9 @@ Hide Tags Tree Depth-first Search
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+
     def recoverTree(self, root):
         """
         :type root: TreeNode
@@ -46,4 +48,4 @@ class Solution(object):
             s = stack.pop()
             if pre and s.val <= pre.val:
                 yield pre, s
-            pre, cur = s, s.right       
+            pre, cur = s, s.right

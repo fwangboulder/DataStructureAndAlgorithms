@@ -17,14 +17,20 @@ Hide Tags Binary Search Array
 Hide Similar Problems (M) Search in Rotated Sorted Array II (M) Find Minimum in Rotated Sorted Array
 
 """
+
+
 class Solution(object):
+
     def search(self, nums, target):
         """
         :type nums: List[int]
         :type target: int
         :rtype: int
         """
+
+
 class Solution(object):
+
     def search(self, nums, target):
         """
         :type nums: List[int]
@@ -33,27 +39,27 @@ class Solution(object):
         """
         if not nums:
             return -1
-        start=0
-        end=len(nums)-1
-        while start+1<end:
-            mid=start+(end-start)/2
-            #left side is sorted
-            if nums[mid]==target:
+        start = 0
+        end = len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            # left side is sorted
+            if nums[mid] == target:
                 return mid
-            elif nums[mid]>nums[start]:
-                if nums[start]<=target<nums[mid]:
-                    end=mid
+            elif nums[mid] > nums[start]:
+                if nums[start] <= target < nums[mid]:
+                    end = mid
                 else:
-                    start=mid
-            #right side is sorted
+                    start = mid
+            # right side is sorted
             else:
-                if nums[mid]<target<=nums[end]:
-                    start=mid
+                if nums[mid] < target <= nums[end]:
+                    start = mid
                 else:
-                    end=mid
-        if nums[start]==target:
+                    end = mid
+        if nums[start] == target:
             return start
-        elif nums[end]==target:
+        elif nums[end] == target:
             return end
         else:
             return -1

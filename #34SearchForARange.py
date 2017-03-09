@@ -19,7 +19,10 @@ Hide Tags Binary Search Array
 Hide Similar Problems (E) First Bad Version
 
 """
+
+
 class Solution(object):
+
     def searchRange(self, nums, target):
         """
         :type nums: List[int]
@@ -33,8 +36,8 @@ class Solution(object):
 
         start, end = 0, len(nums) - 1
 
-        #search left
-        #mid >= target, ends=mid
+        # search left
+        # mid >= target, ends=mid
         while start + 1 < end:
             mid = start + (end - start) / 2
             if nums[mid] >= target:
@@ -48,13 +51,13 @@ class Solution(object):
             left = end
         else:
             #not found
-            return [-1,-1]
+            return [-1, -1]
 
         start, end = 0, len(nums) - 1
-        #search right
-        #mid <= target,start=mid
+        # search right
+        # mid <= target,start=mid
         while start + 1 < end:
-            mid = start + (end-start)/2
+            mid = start + (end - start) / 2
             if nums[mid] <= target:
                 start = mid
             else:

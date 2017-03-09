@@ -17,52 +17,59 @@ Hide Tags Array Stack Two Pointers
 Hide Similar Problems (M) Container With Most Water (M) Product of Array Except Self (H) Trapping Rain Water II
 
 """
+
+
 class Solution(object):
+
     def trap(self, height):
         """
         :type height: List[int]
         :rtype: int
         """
-        res=0
-        l,r=0,len(height)-1
-        while l<r:
-            i=1
-            if height[l]<height[r]:
-                while height[l]>height[l+i]:
-                    res+=height[l]-height[l+i]
-                    i+=1
-                l+=i
+        res = 0
+        l, r = 0, len(height) - 1
+        while l < r:
+            i = 1
+            if height[l] < height[r]:
+                while height[l] > height[l + i]:
+                    res += height[l] - height[l + i]
+                    i += 1
+                l += i
             else:
-                while height[r]>height[r-i]:
-                    res+=height[r]-height[r-i]
-                    i+=1
-                r-=i
+                while height[r] > height[r - i]:
+                    res += height[r] - height[r - i]
+                    i += 1
+                r -= i
         return res
-##method 2 use stack
+# method 2 use stack
+
+
 class Solution(object):
+
     def trap(self, height):
         """
         :type height: List[int]
         :rtype: int
         """
-        #use stack
-        s=[]
-        res=0
+        # use stack
+        s = []
+        res = 0
         if not height:
             return 0
         for i in range(len(height)):
-            #print height[i]
-            if not s or height[i]<height[s[-1]]:
+            # print height[i]
+            if not s or height[i] < height[s[-1]]:
                 s.append(i)
             else:
-                while s and height[i]>height[s[-1]]:
-                    index=s.pop()
+                while s and height[i] > height[s[-1]]:
+                    index = s.pop()
                     if not s:
                         break
                     else:
 
-                        #print i, index
-                        res+= (min(height[s[-1]], height[i])-height[index])*(i-s[-1]-1)
+                        # print i, index
+                        res += (min(height[s[-1]], height[i]) -
+                                height[index]) * (i - s[-1] - 1)
                 s.append(i)
-            print s,res
+            print s, res
         return res

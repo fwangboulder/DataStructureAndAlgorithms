@@ -13,22 +13,24 @@ Hide Tags Array Two Pointers
 Hide Similar Problems (H) Trapping Rain Water
 """
 
+
 class Solution(object):
+
     def maxArea(self, height):
         """
         :type height: List[int]
         :rtype: int
         """
-        start=0
-        end=len(height)-1
-        maxarea=0
-        while start<end:
-            cur=(end-start)
-            if height[start]<height[end]:
-                cur=cur*height[start]
-                start+=1
+        start = 0
+        end = len(height) - 1
+        maxarea = 0
+        while start < end:
+            cur = (end - start)
+            if height[start] < height[end]:
+                cur = cur * height[start]
+                start += 1
             else:
-                cur=cur*height[end]
-                end-=1
-            maxarea=max(cur,maxarea)
+                cur = cur * height[end]
+                end -= 1
+            maxarea = max(cur, maxarea)
         return maxarea

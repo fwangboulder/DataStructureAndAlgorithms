@@ -13,7 +13,10 @@ Hide Tags Two Pointers String
 Hide Similar Problems (H) Shortest Palindrome (E) Repeated Substring Pattern
 
 """
+
+
 class Solution(object):
+
     def strStr(self, haystack, needle):
         """
         :type haystack: str
@@ -21,9 +24,8 @@ class Solution(object):
         :rtype: int
         """
 
-        if needle =='':
+        if needle == '':
             return 0
         if needle in haystack:
             return len(haystack.split(needle)[0])
         return -1
-        

@@ -15,9 +15,11 @@ You should return the indices: [0,9].
 Hide Tags Hash Table Two Pointers String
 Hide Similar Problems (H) Minimum Window Substring
 """
-class Solution(object):
-    def findSubstring(self, s, words):
 
+
+class Solution(object):
+
+    def findSubstring(self, s, words):
         """
         :type s: str
         :type words: List[str]
@@ -34,31 +36,31 @@ class Solution(object):
         if not words or len(s) < len(words) * len(words[0]):
             return result
         wl, count, n, word_dict = len(words[0]), len(words), len(s), {}
-        #init word occurence
+        # init word occurence
         for w in words:
             word_dict[w] = word_dict.get(w, 0) + 1
-        #travel all sub string combinations
+        # travel all sub string combinations
         for i in range(wl):
             start, cnt, tmp_dict = i, 0, {}
-            for j in range(i, n-wl+1, wl):
-                str = s[j: j+wl]
-                #a valid word, accumulate results
+            for j in range(i, n - wl + 1, wl):
+                str = s[j: j + wl]
+                # a valid word, accumulate results
                 if word_dict.get(str):
                     cnt += 1
-                    tmp_dict[str] = tmp_dict.get(str,0) + 1
-                    #a more word, advance the window left side possiablly
+                    tmp_dict[str] = tmp_dict.get(str, 0) + 1
+                    # a more word, advance the window left side possiablly
                     while tmp_dict[str] > word_dict[str]:
-                        tmp_dict[s[start: start+wl]] -= 1
+                        tmp_dict[s[start: start + wl]] -= 1
                         start += wl
                         cnt -= 1
-                    #come to a result
+                    # come to a result
                     if cnt == count:
                         result.append(start)
-                        #advance one word
-                        tmp_dict[s[start: start+wl]] -= 1
+                        # advance one word
+                        tmp_dict[s[start: start + wl]] -= 1
                         start += wl
                         cnt -= 1
-                #not a valid word, reset all vars
+                # not a valid word, reset all vars
                 else:
-                    start, cnt, tmp_dict = j+wl, 0, {}
+                    start, cnt, tmp_dict = j + wl, 0, {}
         return result

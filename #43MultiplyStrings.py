@@ -17,7 +17,10 @@ Hide Tags Math String
 Hide Similar Problems (M) Add Two Numbers (E) Plus One (E) Add Binary (E) Add Strings
 
 """
+
+
 class Solution(object):
+
     def multiply(self, num1, num2):
         """
         :type num1: str
@@ -26,21 +29,18 @@ class Solution(object):
         """
         if not num1 or not num2:
             return ''
-        product=[0]*(len(num1)+len(num2))
+        product = [0] * (len(num1) + len(num2))
 
-
-        pos=len(product)-1
+        pos = len(product) - 1
         for n1 in reversed(num1):
-            tmppos=pos
+            tmppos = pos
             for n2 in reversed(num2):
-                product[tmppos]+=int(n1)*int(n2)
-                product[tmppos-1]+=product[tmppos]/10
-                product[tmppos]=product[tmppos]%10
-                tmppos-=1
-            pos-=1
-        start=0
-        while start<len(product)-1 and product[start]==0:
-            start+=1
-        return ''.join(map(str,product[start:]))
-
-                
+                product[tmppos] += int(n1) * int(n2)
+                product[tmppos - 1] += product[tmppos] / 10
+                product[tmppos] = product[tmppos] % 10
+                tmppos -= 1
+            pos -= 1
+        start = 0
+        while start < len(product) - 1 and product[start] == 0:
+            start += 1
+        return ''.join(map(str, product[start:]))

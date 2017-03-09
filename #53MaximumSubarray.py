@@ -15,28 +15,31 @@ Hide Company Tags LinkedIn Bloomberg Microsoft
 Hide Tags Array Dynamic Programming Divide and Conquer
 Hide Similar Problems (E) Best Time to Buy and Sell Stock (M) Maximum Product Subarray
 """
-##The idea is to find the largest difference between the sums when you summing
-#up the array from left to right. The largest difference corresponds to the
-#sub-array with largest sum. I worked it out independently although It is very
-#close to lucastan's solution
+# The idea is to find the largest difference between the sums when you summing
+# up the array from left to right. The largest difference corresponds to the
+# sub-array with largest sum. I worked it out independently although It is very
+# close to lucastan's solution
+
+
 class Solution(object):
+
     def maxSubArray(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        if len(nums)==1:
+        if len(nums) == 1:
             return nums[0]
-        res=nums[0]
-        Sum=0
-        Min=0
+        res = nums[0]
+        Sum = 0
+        Min = 0
 
-        for i in range(0,len(nums)):
-            Sum+=nums[i]
-            if Sum-Min>res:
-                res=Sum-Min
-            if Sum<Min:
-                Min=Sum
+        for i in range(0, len(nums)):
+            Sum += nums[i]
+            if Sum - Min > res:
+                res = Sum - Min
+            if Sum < Min:
+                Min = Sum
         return res
 
 
@@ -55,7 +58,10 @@ Here is a sample code for divide and conquer solution. Please try to understand 
 
 
 """
+
+
 class Solution(object):
+
     def maxSubArray(self, nums):
         """
         :type nums: List[int]
@@ -63,10 +69,10 @@ class Solution(object):
         """
         return self.maxSubArrayHelper(nums, 0, len(nums) - 1)
 
-    def maxSubArrayHelper(self,nums, l, r):
+    def maxSubArrayHelper(self, nums, l, r):
         if l > r:
             return -2147483647
-        m = (l+r) / 2
+        m = (l + r) / 2
 
         leftMax = sumNum = 0
         for i in range(m - 1, l - 1, -1):

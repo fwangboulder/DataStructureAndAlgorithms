@@ -18,7 +18,9 @@ Hide Tags Array Binary Search
 Hide Similar Problems (E) First Bad Version
 """
 
+
 class Solution(object):
+
     def searchInsert(self, nums, target):
         """
         :type nums: List[int]
@@ -32,16 +34,17 @@ class Solution(object):
         while start + 1 < end:
             mid = start + (end - start) / 2
             if nums[mid] >= target:
-                #can not stop when equal because of possible duplicates, should continue search
+                # can not stop when equal because of possible duplicates,
+                # should continue search
                 end = mid
             else:
-                #start = mid + 1 is also fine
+                # start = mid + 1 is also fine
                 start = mid
 
-        #start, end, compare them with target, to find the right position
+        # start, end, compare them with target, to find the right position
         if nums[start] >= target:
             return start
         if nums[end] >= target:
             return end
-        #reach the end of array
+        # reach the end of array
         return len(nums)

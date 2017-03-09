@@ -22,8 +22,11 @@ Hide Tags Array Binary Search
 Hide Similar Problems (M) Search in Rotated Sorted Array
 
 """
+
+
 class Solution(object):
-    def search(self,nums,target):
+
+    def search(self, nums, target):
         """
         :type nums: List[int]
         :type target: int
@@ -40,7 +43,7 @@ class Solution(object):
                 return True
 
             if nums[start] < nums[mid]:
-                #left is sorted
+                # left is sorted
                 if nums[start] <= target and target < nums[mid]:
                     end = mid
                 else:
@@ -48,7 +51,7 @@ class Solution(object):
             elif nums[start]==nums[mid]:  ####duplicate case
                 start+=1
             else:
-                #right is sorted
+                # right is sorted
                 if target > nums[mid] and target <= nums[end]:
                     start = mid
                 else:

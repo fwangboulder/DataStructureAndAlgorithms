@@ -27,7 +27,9 @@ Hide Tags Array Backtracking
 
 """
 
+
 class Solution(object):
+
     def subsetsWithDup(self, nums):
         """
         :type nums: List[int]
@@ -41,6 +43,6 @@ class Solution(object):
     def dfs(self, nums, index, path, res):
         res.append(path)
         for i in xrange(index, len(nums)):
-            if i > index and nums[i] == nums[i-1]:
+            if i > index and nums[i] == nums[i - 1]:
                 continue
-            self.dfs(nums, i+1, path+[nums[i]], res)
+            self.dfs(nums, i + 1, path + [nums[i]], res)

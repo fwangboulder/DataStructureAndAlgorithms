@@ -27,7 +27,9 @@ Hide Similar Problems (M) Unique Binary Search Trees (M) Different Ways to Add P
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+
     def generateTrees(self, n):
         """
         :type n: int
@@ -35,7 +37,7 @@ class Solution(object):
         """
         if n == 0:
             return []
-        return self.dfs(1, n+1)
+        return self.dfs(1, n + 1)
 
     def dfs(self, start, end):
         if start == end:
@@ -43,8 +45,8 @@ class Solution(object):
         result = []
         for i in xrange(start, end):
             for l in self.dfs(start, i) or [None]:
-                for r in self.dfs(i+1, end) or [None]:
+                for r in self.dfs(i + 1, end) or [None]:
                     node = TreeNode(i)
-                    node.left, node.right  = l, r
+                    node.left, node.right = l, r
                     result.append(node)
         return result

@@ -43,8 +43,11 @@ We say that "rgtae" is a scrambled string of "great".
 Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
 
 """
-#dfs
+# dfs
+
+
 class Solution(object):
+
     def isScramble(self, s1, s2):
         """
         :type s1: str
@@ -53,6 +56,7 @@ class Solution(object):
         """
 
         dp = {}
+
         def dfs(s1, s2):
             if s1 > s2:
                 return dfs(s2, s1)
@@ -60,8 +64,8 @@ class Solution(object):
                 dp[(s1, s2)] = s1 == s2
                 if not dp[(s1, s2)] and sorted(s1) == sorted(s2):
                     for i in range(1, len(s1)):
-                        if (dfs(s1[:i], s2[:i]) and dfs(s1[i:], s2[i:])) or\
-                        (dfs(s1[:i], s2[-i:]) and dfs(s1[i:], s2[:-i])):
+                        if (dfs(s1[:i], s2[:i]) and dfs(s1[i:], s2[i:])) or (
+                                dfs(s1[:i], s2[-i:]) and dfs(s1[i:], s2[:-i])):
                             dp[(s1, s2)] = True
             return dp[(s1, s2)]
         return dfs(s1, s2)

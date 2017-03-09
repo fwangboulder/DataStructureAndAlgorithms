@@ -21,7 +21,9 @@ Hide Tags Linked List
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def deleteDuplicates(self, head):
         """
         :type head: ListNode
@@ -29,24 +31,24 @@ class Solution(object):
         """
         if not head or not head.next:
             return head
-        dummy=ListNode(0)
-        dummy.next=head
-        pre=dummy
+        dummy = ListNode(0)
+        dummy.next = head
+        pre = dummy
         while head and head.next:
-            if head.val==head.next.val:
-                head=head.next
-                while head and head.next and head.val==head.next.val:
-                    head=head.next
-                head=head.next
-                pre.next=head
+            if head.val == head.next.val:
+                head = head.next
+                while head and head.next and head.val == head.next.val:
+                    head = head.next
+                head = head.next
+                pre.next = head
             else:
-                pre=head
-                head=head.next
+                pre = head
+                head = head.next
 
         return dummy.next
 
 
-#second create a dummy
+# second create a dummy
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
@@ -54,18 +56,19 @@ class Solution(object):
 #         self.next = None
 
 class Solution(object):
+
     def deleteDuplicates(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
-        dummy=ListNode(0)
-        pre=dummy
-        dummy.next=head
+        dummy = ListNode(0)
+        pre = dummy
+        dummy.next = head
         while head and head.next:
-            if head.val==head.next.val:
-                head.next=head.next.next
+            if head.val == head.next.val:
+                head.next = head.next.next
             else:
-                pre=pre.next
-                head=head.next
+                pre = pre.next
+                head = head.next
         return dummy.next

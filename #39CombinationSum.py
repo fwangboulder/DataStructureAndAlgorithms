@@ -21,7 +21,10 @@ Hide Company Tags Snapchat Uber
 Hide Tags Array Backtracking
 Hide Similar Problems (M) Letter Combinations of a Phone Number (M) Combination Sum II (M) Combinations (M) Combination Sum III (M) Factor Combinations (M) Combination Sum IV
 """
+
+
 class Solution(object):
+
     def combinationSum(self, candidates, target):
         """
         :type candidates: List[int]
@@ -32,18 +35,18 @@ class Solution(object):
         if not candidates:
             return []
         candidates.sort()
-        res=[]
-        path=[]
-        self.dfs(candidates,target,res,path,0)
+        res = []
+        path = []
+        self.dfs(candidates, target, res, path, 0)
         return res
-    def dfs(self,nums,target,res,path,index):
 
-        if target==0:
+    def dfs(self, nums, target, res, path, index):
+
+        if target == 0:
             res.append(path)
             return
 
-        for i in range(index,len(nums)):
-            if target<nums[index]:
+        for i in range(index, len(nums)):
+            if target < nums[index]:
                 break
-            self.dfs(nums,target-nums[i],res,path+[nums[i]],i)
-       
+            self.dfs(nums, target - nums[i], res, path + [nums[i]], i)

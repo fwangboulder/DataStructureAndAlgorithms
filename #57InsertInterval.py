@@ -27,7 +27,9 @@ Hide Similar Problems (M) Merge Intervals
 #         self.start = s
 #         self.end = e
 
+
 class Solution(object):
+
     def insert(self, intervals, newInterval):
         """
         :type intervals: List[Interval]
@@ -39,8 +41,8 @@ class Solution(object):
         res = []
         i = 0
         while i < len(intervals):
-            l=intervals[i].start
-            r=intervals[i].end
+            l = intervals[i].start
+            r = intervals[i].end
 
             if start <= r:
                 if end < l:

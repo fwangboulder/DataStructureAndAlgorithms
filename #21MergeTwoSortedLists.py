@@ -18,26 +18,27 @@ Hide Similar Problems (H) Merge k Sorted Lists (E) Merge Sorted Array (M) Sort L
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def mergeTwoLists(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
         """
-        dummy=ListNode(0)
-        tmp=dummy
+        dummy = ListNode(0)
+        tmp = dummy
         while l1 and l2:
-            if l1.val<l2.val:
-                tmp.next=l1
-                l1=l1.next
+            if l1.val < l2.val:
+                tmp.next = l1
+                l1 = l1.next
             else:
-                tmp.next=l2
-                l2=l2.next
-            tmp=tmp.next
+                tmp.next = l2
+                l2 = l2.next
+            tmp = tmp.next
         if l1:
-            tmp.next=l1
+            tmp.next = l1
         elif l2:
-            tmp.next=l2
+            tmp.next = l2
         return dummy.next
-            

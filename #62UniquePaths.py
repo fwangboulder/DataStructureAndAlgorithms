@@ -20,7 +20,10 @@ Hide Tags Array Dynamic Programming
 Hide Similar Problems (M) Unique Paths II (M) Minimum Path Sum (H) Dungeon Game
 
 """
+
+
 class Solution(object):
+
     def uniquePaths(self, m, n):
         """
         :type m: int
@@ -30,5 +33,5 @@ class Solution(object):
         dp = [[1 for x in range(n)] for x in range(m)]
         for i in range(1, m):
             for j in range(1, n):
-                dp[i][j] = dp[i][j-1]+dp[i-1][j]
-        return dp[-1][-1]        
+                dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
+        return dp[-1][-1]

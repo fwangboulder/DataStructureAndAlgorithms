@@ -30,7 +30,9 @@ Hide Tags Backtracking
 Hide Similar Problems (H) N-Queens II
 """
 
+
 class Solution(object):
+
     def solveNQueens(self, n):
         """
         :type n: int
@@ -39,16 +41,17 @@ class Solution(object):
         res = []
         stack = []
         for i in range(n):
-            stack.append([(0,i)]) # start stack: first row of board in four different columns
+            # start stack: first row of board in four different columns
+            stack.append([(0, i)])
         while stack:
             board = stack.pop()
             row = len(board)
-            #print 'b,r',board,row
-            if row == n: # if there are four elements, this means one solution comes out
+            # print 'b,r',board,row
+            if row == n:  # if there are four elements, this means one solution comes out
                 tmpList = []
-                for r,c in board:#row number stored in order
+                for r, c in board:  # row number stored in order
                     tmp = []
-                    for i in range(n): #find the right column
+                    for i in range(n):  # find the right column
                         if i == c:
                             tmp.append('Q')
                         else:
@@ -59,11 +62,11 @@ class Solution(object):
             for col in range(n):
                 tmp = []
                 for r, c in board:
-                     #r=0,c=3,col!=3,col=0,1,2,row=1
-                    #check whether vaild for each board element
-                    tmp.append(col != c and abs(row-r) != abs(col-c))
-                #print 'tmp', tmp
+                     # r=0,c=3,col!=3,col=0,1,2,row=1
+                    # check whether vaild for each board element
+                    tmp.append(col != c and abs(row - r) != abs(col - c))
+                # print 'tmp', tmp
                 if all(tmp):
-                    stack.append(board+[(row, col)])
-            #print 'end',stack,res
+                    stack.append(board + [(row, col)])
+            # print 'end',stack,res
         return res

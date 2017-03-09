@@ -19,42 +19,45 @@ Hide Company Tags Amazon Microsoft Bloomberg Uber
 Hide Tags Math String
 Hide Similar Problems (E) Reverse Integer (H) Valid Number
 """
+
+
 class Solution(object):
+
     def myAtoi(self, str):
         """
         :type str: str
         :rtype: int
         """
-        int_max=2**31-1
-        int_min=-2**31
-        #check none situation
+        int_max = 2**31 - 1
+        int_min = -2**31
+        # check none situation
 
-        #check only whitespace situation
-        str=str.strip()
+        # check only whitespace situation
+        str = str.strip()
         if not str:
             return 0
         #check + - situation
-        flag=1
-        if str[0] in ["+","-"]:
-            if str[0]=='-':
-                flag=-1
-            str=str[1:]
-        #check if the first char is number
+        flag = 1
+        if str[0] in ["+", "-"]:
+            if str[0] == '-':
+                flag = -1
+            str = str[1:]
+        # check if the first char is number
         if not str or not str[0].isdigit():
             return 0
-        #ignore all chars after the first no-number char
+        # ignore all chars after the first no-number char
         for i, v in enumerate(str):
             if not v.isdigit():
-                str=str[:i]
+                str = str[:i]
                 break
-        result=0
+        result = 0
         for v in str[:]:
-            result+=ord(v)-ord('0')
-            result*=10
-        result/=10
-        result*=flag
-        if result>int_max:
+            result += ord(v) - ord('0')
+            result *= 10
+        result /= 10
+        result *= flag
+        if result > int_max:
             return int_max
-        elif result<int_min:
+        elif result < int_min:
             return int_min
         return result

@@ -13,7 +13,10 @@ Hide Similar Problems (M) Unique Paths (H) Dungeon Game
 Have you met this question in a real interview? Yes
 
 """
+
+
 class Solution(object):
+
     def minPathSum(self, grid):
         """
         :type grid: List[List[int]]
@@ -26,18 +29,18 @@ class Solution(object):
         we need dp[m-1][n-1]
 
         """
-        m=len(grid)
-        n=len(grid[0])
-        dp=[0 for col in range(n)]
+        m = len(grid)
+        n = len(grid[0])
+        dp = [0 for col in range(n)]
         print dp
         for i in range(m):
             for j in range(n):
-                if i==0 and j==0:
-                    dp[j]=grid[i][j]
-                elif i==0 and j!=0:
-                    dp[j]=dp[j-1]+grid[i][j]
-                elif j==0 and i!=0:
-                    dp[j]=dp[j]+grid[i][j]
+                if i == 0 and j == 0:
+                    dp[j] = grid[i][j]
+                elif i == 0 and j != 0:
+                    dp[j] = dp[j - 1] + grid[i][j]
+                elif j == 0 and i != 0:
+                    dp[j] = dp[j] + grid[i][j]
                 else:
-                    dp[j]=min(dp[j],dp[j-1])+grid[i][j]
-        return dp[n-1]
+                    dp[j] = min(dp[j], dp[j - 1]) + grid[i][j]
+        return dp[n - 1]

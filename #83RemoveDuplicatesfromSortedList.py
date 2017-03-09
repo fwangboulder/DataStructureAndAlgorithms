@@ -20,7 +20,9 @@ Hide Tags Linked List
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def deleteDuplicates(self, head):
         """
         :type head: ListNode
@@ -28,13 +30,13 @@ class Solution(object):
         """
         if not head:
             return None
-        cur=head.next
-        prev=head
+        cur = head.next
+        prev = head
         while cur:
-            if cur.val==prev.val:
-                prev.next=cur.next
-                cur=cur.next
+            if cur.val == prev.val:
+                prev.next = cur.next
+                cur = cur.next
             else:
-                prev=prev.next
-                cur=cur.next
+                prev = prev.next
+                cur = cur.next
         return head

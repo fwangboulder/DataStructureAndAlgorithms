@@ -16,13 +16,16 @@ return 5.
 
 Hide Tags String
 """
+
+
 class Solution(object):
+
     def lengthOfLastWord(self, s):
         """
         :type s: str
         :rtype: int
         """
-        s=s.strip().split()
+        s = s.strip().split()
         if not s:
             return 0
         return len(s[-1])

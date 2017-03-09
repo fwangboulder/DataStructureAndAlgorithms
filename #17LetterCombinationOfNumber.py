@@ -19,32 +19,52 @@ Hide Company Tags Amazon Dropbox Google Uber Facebook
 Hide Tags Backtracking String
 Hide Similar Problems (M) Generate Parentheses (M) Combination Sum (E) Binary Watch
 """
-#method 1
+# method 1
+
+
 class Solution(object):
+
     def letterCombinations(self, digits):
         """
         :type digits: str
         :rtype: List[str]
         """
-        d={"2":"abc","3":"def","4":"ghi","5":"jkl","6":"mno","7":"pqrs","8":"tuv","9":"wxyz"}
+        d = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "pqrs",
+            "8": "tuv",
+            "9": "wxyz"}
 
         if not digits:
             return []
-        res=['']
-        l=len(digits)
+        res = ['']
+        l = len(digits)
         for i in range(l):
-            new_res=[]
+            new_res = []
             for j in res:
                 for k in d[digits[i]]:
-                    new_res.append(j+k)
-            res=new_res
+                    new_res.append(j + k)
+            res = new_res
         return res
 
 
 # Method 2:DFS
 class Solution(object):
+
     def __init__(self):
-        self.memo={"2":"abc","3":"def","4":"ghi","5":"jkl","6":"mno","7":"pqrs","8":"tuv","9":"wxyz"}
+        self.memo = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "pqrs",
+            "8": "tuv",
+            "9": "wxyz"}
 
     def letterCombinations(self, digits):
         """
@@ -52,16 +72,17 @@ class Solution(object):
         :rtype: List[str]
         """
 
-        res=[]
-        path=""
-        index=0
+        res = []
+        path = ""
+        index = 0
         if not digits:
             return res
-        self.dfs(digits,res,path,index)
+        self.dfs(digits, res, path, index)
         return res
-    def dfs(self,digits,res,path,index):
-        if index==len(digits):
+
+    def dfs(self, digits, res, path, index):
+        if index == len(digits):
             res.append(path)
             return
         for i in self.memo[digits[index]]:
-            self.dfs(digits,res,path+i,index+1)
+            self.dfs(digits, res, path + i, index + 1)

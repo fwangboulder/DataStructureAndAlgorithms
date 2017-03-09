@@ -22,7 +22,10 @@ Special thanks to @ts for adding this problem and creating all test cases.
 Hide Company Tags Microsoft Google
 Hide Tags Binary Search Array
 """
+
+
 class Solution(object):
+
     def findPeakElement(self, nums):
         """
         :type nums: List[int]

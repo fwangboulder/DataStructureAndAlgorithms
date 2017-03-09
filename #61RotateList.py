@@ -20,34 +20,36 @@ Hide Similar Problems (E) Rotate Array
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def rotateRight(self, head, k):
         """
         :type head: ListNode
         :type k: int
         :rtype: ListNode
         """
-        p=head
-        l=0
-        #calculate the length of linklist
+        p = head
+        l = 0
+        # calculate the length of linklist
         while p:
-            l+=1
-            p=p.next
+            l += 1
+            p = p.next
 
-        if l<2 or k%l==0:
+        if l < 2 or k % l == 0:
             return head
-        q=head
-        for _ in range(l-k%l-1):
-            q=q.next
+        q = head
+        for _ in range(l - k % l - 1):
+            q = q.next
         if not q.next:
             return head
         else:
-            newhead=q.next
+            newhead = q.next
 
-            q.next=None
-            p=newhead
+            q.next = None
+            p = newhead
         while p and p.next:
-            p=p.next
-        p.next=head
+            p = p.next
+        p.next = head
 
         return newhead

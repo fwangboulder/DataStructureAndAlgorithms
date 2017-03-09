@@ -29,7 +29,10 @@ step 3: if arrive end of the last column: di=0,dj=-1
 ...
 
 """
+
+
 class Solution(object):
+
     def spiralOrder(self, matrix):
         """
         :type matrix: List[List[int]]
@@ -37,14 +40,14 @@ class Solution(object):
         """
         if not matrix:
             return []
-        res=[]
-        m,n=len(matrix),len(matrix[0])
-        i,j,di,dj=0,0,0,1
-        for k in xrange(m*n):
+        res = []
+        m, n = len(matrix), len(matrix[0])
+        i, j, di, dj = 0, 0, 0, 1
+        for k in xrange(m * n):
             res.append(matrix[i][j])
-            matrix[i][j]=''
-            if matrix[(i+di)%m][(j+dj)%n]=='':
-                di,dj=dj,-di
-            i+=di
-            j+=dj
+            matrix[i][j] = ''
+            if matrix[(i + di) % m][(j + dj) % n] == '':
+                di, dj = dj, -di
+            i += di
+            j += dj
         return res

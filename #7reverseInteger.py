@@ -15,22 +15,24 @@ Hide Company Tags Bloomberg Apple
 Hide Tags Math
 Hide Similar Problems (E) String to Integer (atoi)
 """
+
+
 class Solution(object):
+
     def reverse(self, x):
         """
         :type x: int
         :rtype: int
         """
-        maxint=2**31-1
-        flag=1
-        if x<0:
-            flag=-1
-            x=-x
-        res=0
+        maxint = 2**31 - 1
+        flag = 1
+        if x < 0:
+            flag = -1
+            x = -x
+        res = 0
         while x:
-            res=res*10+x%10
-            x=x/10
-        if res>maxint:
+            res = res * 10 + x % 10
+            x = x / 10
+        if res > maxint:
             return 0
-        return res*flag
-        
+        return res * flag

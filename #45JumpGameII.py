@@ -20,7 +20,10 @@ You can assume that you can always reach the last index.
 
 Hide Tags Array Greedy
 """
+
+
 class Solution(object):
+
     def jump(self, A):
         """
         :type nums: List[int]
@@ -29,8 +32,8 @@ class Solution(object):
         if len(A) <= 1:
             return 0
         step, max_range, next_range = 1, A[0], A[0]
-        for i in xrange(1,len(A)):
-            if max_range >= len(A)-1:
+        for i in xrange(1, len(A)):
+            if max_range >= len(A) - 1:
                 return step
             if i > max_range:
                 max_range = next_range

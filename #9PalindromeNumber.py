@@ -12,28 +12,29 @@ Hide Tags Math
 Hide Similar Problems (E) Palindrome Linked List
 
 """
+
+
 class Solution(object):
+
     def isPalindrome(self, x):
         """
         :type x: int
         :rtype: bool
         """
-        if x<0:
+        if x < 0:
             return False
-        tmp=x
-        hfactor=1
+        tmp = x
+        hfactor = 1
         while tmp:
-            hfactor*=10
-            tmp/=10
-        hfactor/=10
+            hfactor *= 10
+            tmp /= 10
+        hfactor /= 10
         while x:
-            if x%10==x/hfactor:
-                x=x%hfactor
-                x/=10
+            if x % 10 == x / hfactor:
+                x = x % hfactor
+                x /= 10
 
             else:
                 return False
-            hfactor/=100
+            hfactor /= 100
         return True
-
-            

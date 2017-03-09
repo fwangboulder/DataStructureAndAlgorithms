@@ -24,7 +24,10 @@ The key here is to use a set to record the pointers, because duplicates
 are possible, using a list cause TLE.
 
 """
+
+
 class Solution(object):
+
     def isInterleave(self, s1, s2, s3):
         """
         :type s1: str

@@ -20,18 +20,21 @@ Hide Company Tags Microsoft Facebook
 Hide Tags Stack String
 
 """
+
+
 class Solution(object):
+
     def simplifyPath(self, path):
         """
         :type path: str
         :rtype: str
         """
-        stack=[]
-        s=[p for p in path.split('/') if p!="." and p!=""]
+        stack = []
+        s = [p for p in path.split('/') if p != "." and p != ""]
         for i in s:
-            if i=="..":
-                if len(stack)>0:
+            if i == "..":
+                if len(stack) > 0:
                     stack.pop()
             else:
                 stack.append(i)
-        return '/'+'/'.join(stack)
+        return '/' + '/'.join(stack)

@@ -20,23 +20,26 @@ Hide Tags Backtracking String
 Hide Similar Problems (M) Letter Combinations of a Phone Number (E) Valid Parentheses
 """
 
+
 class Solution(object):
+
     def generateParenthesis(self, n):
         """
         :type n: int
         :rtype: List[str]
         """
-        res=[]
-        s=""
+        res = []
+        s = ""
         if n:
-            self.dfs(res,s,n,n)
+            self.dfs(res, s, n, n)
         return res
-    def dfs(self,res,s,l,r):
-        if l==0 and r==0:
+
+    def dfs(self, res, s, l, r):
+        if l == 0 and r == 0:
             res.append(s)
-        if l>r:
+        if l > r:
             return
-        if l>0:
-            self.dfs(res,s+'(',l-1,r)
-        if r>0:
-            self.dfs(res,s+')',l,r-1)
+        if l > 0:
+            self.dfs(res, s + '(', l - 1, r)
+        if r > 0:
+            self.dfs(res, s + ')', l, r - 1)

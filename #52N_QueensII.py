@@ -15,28 +15,29 @@ Hide Tags Backtracking
 Hide Similar Problems (H) N-Queens
 """
 
+
 class Solution(object):
+
     def totalNQueens(self, n):
         """
         :type n: int
         :rtype: int
         """
-        count=0
-        stack=[]
+        count = 0
+        stack = []
         for i in range(n):
-            stack.append([(0,i)])
+            stack.append([(0, i)])
 
         while stack:
-            board=stack.pop()
-            row=len(board)
-            if row==n:
-                count+=1
+            board = stack.pop()
+            row = len(board)
+            if row == n:
+                count += 1
             else:
                 for col in range(n):
-                    tmp=[]
-                    for r,c in board:
-                        tmp.append(col!=c and abs(col-c)!=abs(row-r))
+                    tmp = []
+                    for r, c in board:
+                        tmp.append(col != c and abs(col - c) != abs(row - r))
                     if all(tmp):
-                        stack.append(board+[(row,col)])
+                        stack.append(board + [(row, col)])
         return count
-        

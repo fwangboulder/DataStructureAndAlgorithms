@@ -17,7 +17,9 @@ Hide Similar Problems (M) Add Two Numbers (M) Multiply Strings (E) Plus One
 
 """
 
+
 class Solution(object):
+
     def addBinary(self, a, b):
         """
         :type a: str
@@ -27,37 +29,37 @@ class Solution(object):
         aa:
         bb:
         """
-        la=len(a)
-        lb=len(b)
-        maxl=max(la,lb)
-        res=''
-        carry=False #check the carry
+        la = len(a)
+        lb = len(b)
+        maxl = max(la, lb)
+        res = ''
+        carry = False  # check the carry
         for i in range(maxl):
-            aa=False #check whether a is 1
-            bb=False #check whether b is 1
-            newcarry=False #pass the new carry to carry in the end
-            if la-1-i>=0 and a[la-1-i]=='1':
-                aa=True
-            if lb-1-i>=0 and b[lb-1-i]=='1':
-                bb=True
-            if aa and bb: #both 1
+            aa = False  # check whether a is 1
+            bb = False  # check whether b is 1
+            newcarry = False  # pass the new carry to carry in the end
+            if la - 1 - i >= 0 and a[la - 1 - i] == '1':
+                aa = True
+            if lb - 1 - i >= 0 and b[lb - 1 - i] == '1':
+                bb = True
+            if aa and bb:  # both 1
                 if carry:
-                    res='1'+res
+                    res = '1' + res
                 else:
-                    res='0'+res
-                newcarry=True
-            elif aa!=bb: #only one equal to 1
+                    res = '0' + res
+                newcarry = True
+            elif aa != bb:  # only one equal to 1
                 if carry:
-                    res='0'+res
-                    newcarry=True
+                    res = '0' + res
+                    newcarry = True
                 else:
-                    res='1'+res
-            else: #both 0
+                    res = '1' + res
+            else:  # both 0
                 if carry:
-                    res='1'+res
+                    res = '1' + res
                 else:
-                    res='0'+res
-            carry=newcarry
+                    res = '0' + res
+            carry = newcarry
         if carry:
-            res='1'+res
+            res = '1' + res
         return res

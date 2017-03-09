@@ -10,7 +10,10 @@ Hide Company Tags Yelp
 Hide Tags String
 
 """
+
+
 class Solution(object):
+
     def longestCommonPrefix(self, strs):
         """
         :type strs: List[str]
@@ -18,10 +21,9 @@ class Solution(object):
         """
         if not strs:
             return ''
-        shortest=min(strs,key=len)
-        for i,val in enumerate(shortest):
+        shortest = min(strs, key=len)
+        for i, val in enumerate(shortest):
             for s in strs:
-                if s[i]!=val:
+                if s[i] != val:
                     return shortest[:i]
         return shortest
-        

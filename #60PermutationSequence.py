@@ -40,11 +40,12 @@ So the 2nd permutation should start with 4. The problem reduces to finding the f
 
 """
 
+
 class Solution(object):
 
     def factorial(self, n):
-        fact, cache = 1, {0:1}
-        for i in range(1, n+1):
+        fact, cache = 1, {0: 1}
+        for i in range(1, n + 1):
             fact *= i
             cache[i] = fact
         return cache
@@ -54,13 +55,13 @@ class Solution(object):
             return
         count = 0
         for j in range(i, len(nums)):
-            if count + cache[len(nums)-i-1] < k:
-                count += cache[len(nums)-i-1]
+            if count + cache[len(nums) - i - 1] < k:
+                count += cache[len(nums) - i - 1]
             else:
                 nums[i], nums[j] = nums[j], nums[i]
-                nums[i+1:] = sorted(nums[i+1:])
+                nums[i + 1:] = sorted(nums[i + 1:])
                 break
-        self.helper(nums, i+1, k-count, cache)
+        self.helper(nums, i + 1, k - count, cache)
         return
 
     def getPermutation(self, n, k):
@@ -69,6 +70,6 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-        cache, nums = self.factorial(n), [x for x in range(1,n+1)]
+        cache, nums = self.factorial(n), [x for x in range(1, n + 1)]
         self.helper(nums, 0, k, cache)
-        return "".join([str(x) for x in nums])        
+        return "".join([str(x) for x in nums])

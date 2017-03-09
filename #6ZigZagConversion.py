@@ -16,22 +16,25 @@ string convert(string text, int nRows);
 convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 Hide Tags String
 """
+
+
 class Solution(object):
+
     def convert(self, s, numRows):
         """
         :type s: str
         :type numRows: int
         :rtype: str
         """
-        if numRows==1 or len(s)<=numRows:
+        if numRows == 1 or len(s) <= numRows:
             return s
-        res=['']*numRows
-        index,step=0,1
+        res = [''] * numRows
+        index, step = 0, 1
         for i in s:
-            res[index]+=i
-            if index==0:
-                step=1          #increasing 
-            elif index==numRows-1:
-                step=-1         #decreasing
-            index+=step
+            res[index] += i
+            if index == 0:
+                step = 1  # increasing
+            elif index == numRows - 1:
+                step = -1  # decreasing
+            index += step
         return ''.join(res)

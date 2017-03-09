@@ -26,7 +26,9 @@ Hide Similar Problems (E) Reverse Linked List
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def reverseBetween(self, head, m, n):
         """
         :type head: ListNode
@@ -34,18 +36,18 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        dummy=ListNode(0)
-        dummy.next=head
-        prev=dummy
-        for i in range(m-1):
-            prev=prev.next
-        cur=prev.next
-        rev=None
-        for i in range(n-m+1):
-            tmp=cur.next
-            cur.next=rev
-            rev=cur
-            cur=tmp
-        prev.next.next=cur
-        prev.next=rev
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
+        for i in range(m - 1):
+            prev = prev.next
+        cur = prev.next
+        rev = None
+        for i in range(n - m + 1):
+            tmp = cur.next
+            cur.next = rev
+            rev = cur
+            cur = tmp
+        prev.next.next = cur
+        prev.next = rev
         return dummy.next

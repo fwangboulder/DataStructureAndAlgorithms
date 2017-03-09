@@ -17,14 +17,15 @@ Hide Company Tags Facebook
 Hide Tags Binary Search
 Hide Similar Problems (M) Search for a Range (M) Search Insert Position (E) Guess Number Higher or Lower
 
-"""# The isBadVersion API is already defined for you.
+"""  # The isBadVersion API is already defined for you.
 # @param version, an integer
 # @return a bool
 # def isBadVersion(version):
 
-class Solution(object):
-    def firstBadVersion(self, n):
 
+class Solution(object):
+
+    def firstBadVersion(self, n):
         """
         :type n: int
         :rtype: int
@@ -34,8 +35,8 @@ class Solution(object):
     def binarySearch(self, low, high):
         if low == high:
             return low
-        mid = low+(high-low)/2
-        if isBadVersion(mid) == True:
+        mid = low + (high - low) / 2
+        if isBadVersion(mid):
             return self.binarySearch(low, mid)
         else:
-            return self.binarySearch(mid , high)
+            return self.binarySearch(mid, high)

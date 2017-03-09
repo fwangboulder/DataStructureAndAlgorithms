@@ -44,7 +44,10 @@ step 2: add spaces
   space.join(array[1:])
 
 """
+
+
 class Solution(object):
+
     def fullJustify(self, words, maxWidth):
         """
         :type words: List[str]
@@ -52,55 +55,58 @@ class Solution(object):
         :rtype: List[str]
         """
         if not words:
-            return [' '*maxWidth]
-        res=[]
-        s=map(len,words)
+            return [' ' * maxWidth]
+        res = []
+        s = map(len, words)
 
         # distribute the world
-        for i in xrange(1,len(s)):
-            s[i]+=s[i-1]
-        i=0
-        base=0
-        start=0
-        #consider one word condition
-        if len(words)==1:
-            return [words[0]+(maxWidth-s[0])*' ']
+        for i in xrange(1, len(s)):
+            s[i] += s[i - 1]
+        i = 0
+        base = 0
+        start = 0
+        # consider one word condition
+        if len(words) == 1:
+            return [words[0] + (maxWidth - s[0]) * ' ']
         #1+ words in array
-        while i<len(s) and s[i]-base+(i-start)<=maxWidth:
-            i+=1
-            if i<len(s) and s[i]-base+(i-start)>maxWidth:
-                l=s[i-1]-base
-                #store the words when reaching the limit of maxWidth in res,the first element is a tuple recording the total #characters and number of words
-                res.append([(l,i-start)]+words[start:i])
-                base=s[i-1]
-                start=i
-            elif i>=len(s):
-                l=s[i-1]-base
-                #when the counting reach the end of the array, stored
-                res.append([(l,i-start)]+words[start:i])
-        #above for distribute the words
-        #below for adding spaces
+        while i < len(s) and s[i] - base + (i - start) <= maxWidth:
+            i += 1
+            if i < len(s) and s[i] - base + (i - start) > maxWidth:
+                l = s[i - 1] - base
+                # store the words when reaching the limit of maxWidth in
+                # res,the first element is a tuple recording the total
+                # #characters and number of words
+                res.append([(l, i - start)] + words[start:i])
+                base = s[i - 1]
+                start = i
+            elif i >= len(s):
+                l = s[i - 1] - base
+                # when the counting reach the end of the array, stored
+                res.append([(l, i - start)] + words[start:i])
+        # above for distribute the words
+        # below for adding spaces
         print res
         for i, v in enumerate(res):
-            #add space to the end if it is the last line
-            if i==len(res)-1 and v[0][1]!=1 and maxWidth-v[0][0]-v[0][1]+1>0:
-                endSpace=' '*(maxWidth-v[0][0]-v[0][1]+1)
-                res[i]=' '.join(v[1:])+endSpace
+            # add space to the end if it is the last line
+            if i == len(
+                    res) - 1 and v[0][1] != 1 and maxWidth - v[0][0] - v[0][1] + 1 > 0:
+                endSpace = ' ' * (maxWidth - v[0][0] - v[0][1] + 1)
+                res[i] = ' '.join(v[1:]) + endSpace
 
-            #if only contains one words, add space in the end
-            elif i<len(res) and v[0][1]==1 and v[0][0]<=maxWidth:
-                endSpace=' '*(maxWidth-v[0][0])
-                res[i]=''.join(v[1:])+endSpace
-            #spaces are distributed evenly
+            # if only contains one words, add space in the end
+            elif i < len(res) and v[0][1] == 1 and v[0][0] <= maxWidth:
+                endSpace = ' ' * (maxWidth - v[0][0])
+                res[i] = ''.join(v[1:]) + endSpace
+            # spaces are distributed evenly
             else:
-                space=' '*((maxWidth-v[0][0])/(v[0][1]-1))
-                mod=(maxWidth-v[0][0])%(v[0][1]-1)
-                for j in range(2,len(v)):
+                space = ' ' * ((maxWidth - v[0][0]) / (v[0][1] - 1))
+                mod = (maxWidth - v[0][0]) % (v[0][1] - 1)
+                for j in range(2, len(v)):
                     if mod:
-                        v[j]=' '+v[j]
-                        mod-=1
+                        v[j] = ' ' + v[j]
+                        mod -= 1
                     else:
                         break
 
-                res[i]=space.join(v[1:])
+                res[i] = space.join(v[1:])
         return res

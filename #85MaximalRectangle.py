@@ -19,8 +19,11 @@ Hide Tags Array Hash Table Stack Dynamic Programming
 Hide Similar Problems (H) Largest Rectangle in Histogram (M) Maximal Square
 
 """
-#convert two dimension to one dimension and then do the same as #84
+# convert two dimension to one dimension and then do the same as #84
+
+
 class Solution(object):
+
     def maximalRectangle(self, matrix):
         """
         :type matrix: List[List[str]]
@@ -28,20 +31,20 @@ class Solution(object):
         """
         if not matrix or not matrix[0]:
             return 0
-        res=0
-        n=len(matrix[0])
-        heights=[0]*(n+1)
+        res = 0
+        n = len(matrix[0])
+        heights = [0] * (n + 1)
         for row in matrix:
             for i in xrange(n):
-                if row[i]=='1':
-                    heights[i]+=1
+                if row[i] == '1':
+                    heights[i] += 1
                 else:
-                    heights[i]=0
-            stack=[-1]
-            for i in xrange(n+1):
-                while heights[i]< heights[stack[-1]]:
-                    h=heights[stack.pop()]
-                    w=i-stack[-1]-1
-                    res=max(res,h*w)
+                    heights[i] = 0
+            stack = [-1]
+            for i in xrange(n + 1):
+                while heights[i] < heights[stack[-1]]:
+                    h = heights[stack.pop()]
+                    w = i - stack[-1] - 1
+                    res = max(res, h * w)
                 stack.append(i)
         return res

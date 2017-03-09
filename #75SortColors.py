@@ -25,56 +25,60 @@ Hide Similar Problems (M) Sort List (M) Wiggle Sort (M) Wiggle Sort II
 
 """
 
+
 class Solution(object):
+
     def sortColors(self, nums):
         """
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        count_0=0
-        count_1=0
-        count_2=0
+        count_0 = 0
+        count_1 = 0
+        count_2 = 0
         for i in nums:
-            if i==0:
-                count_0+=1
-            elif i==1:
-                count_1+=1
+            if i == 0:
+                count_0 += 1
+            elif i == 1:
+                count_1 += 1
             else:
-                count_2+=1
-        print count_0, count_1,count_2
+                count_2 += 1
+        print count_0, count_1, count_2
         if count_0:
             for i in range(count_0):
-                nums[i]=0
+                nums[i] = 0
         if count_1:
 
-            for i in range(count_0,count_1+count_0):
-                nums[i]=1
+            for i in range(count_0, count_1 + count_0):
+                nums[i] = 1
         if count_2:
-            for i in range(count_0+count_1, count_2+count_1+count_0):
-                nums[i]=2
+            for i in range(count_0 + count_1, count_2 + count_1 + count_0):
+                nums[i] = 2
 
-#method 2: one pass
+# method 2: one pass
+
+
 class Solution(object):
+
     def sortColors(self, nums):
         """
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        n0,n1,n2=-1,-1,-1
+        n0, n1, n2 = -1, -1, -1
         for i in range(len(nums)):
-            if nums[i]==0:
-                n2+=1
-                nums[n2]=2
-                n1+=1
-                nums[n1]=1
-                n0+=1
-                nums[n0]=0
-            elif nums[i]==1:
-                n2+=1
-                nums[n2]=2
-                n1+=1
-                nums[n1]=1
-            elif nums[i]==2:
-                n2+=1
-                nums[n2]=2
-                
+            if nums[i] == 0:
+                n2 += 1
+                nums[n2] = 2
+                n1 += 1
+                nums[n1] = 1
+                n0 += 1
+                nums[n0] = 0
+            elif nums[i] == 1:
+                n2 += 1
+                nums[n2] = 2
+                n1 += 1
+                nums[n1] = 1
+            elif nums[i] == 2:
+                n2 += 1
+                nums[n2] = 2

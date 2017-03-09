@@ -16,21 +16,25 @@ Your function should return length = 2, with the first two elements of nums bein
 Hide Company Tags
 """
 
+
 class Solution(object):
+
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        l=len(nums)
-        start=0
-        while start<len(nums)-1:
-            if nums[start]==nums[start+1]:
-                l-=1
-                print start+2,nums[:start+1],nums[start+2:]
-                nums=nums[:start+1]+nums[start+2:]
+        l = len(nums)
+        start = 0
+        while start < len(nums) - 1:
+            if nums[start] == nums[start + 1]:
+                l -= 1
+                print start + 2, nums[:start + 1], nums[start + 2:]
+                nums = nums[:start + 1] + nums[start + 2:]
+
 
 class Solution(object):
+
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
@@ -51,7 +55,6 @@ class Solution(object):
                     tail, head = tail + 1, head + 1
         return tail + 1
 
-
-            start+=1
+            start += 1
 
         return l

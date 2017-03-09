@@ -1,4 +1,5 @@
 class Solution(object):
+
     def divide(self, dividend, divisor):
         """
         :type dividend: int
@@ -18,9 +19,9 @@ class Solution(object):
 
         dividend, divisor = abs(dividend), abs(divisor)
         res = 0
-        #19/3
-        #dividend 12 times=4
-        #7    6  times 2
+        # 19/3
+        # dividend 12 times=4
+        # 7    6  times 2
         while dividend >= divisor:
             d, times = divisor, 1
             while d <= dividend:

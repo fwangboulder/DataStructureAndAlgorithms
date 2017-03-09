@@ -19,17 +19,19 @@ Hide Company Tags Microsoft
 Hide Tags Array Greedy
 """
 
+
 class Solution(object):
+
     def canJump(self, nums):
         """
         :type nums: List[int]
         :rtype: bool
         """
-        steps=1
-        for i in range(len(nums)-1):
-            steps-=1
-            if nums[i]==0 and steps==0:
+        steps = 1
+        for i in range(len(nums) - 1):
+            steps -= 1
+            if nums[i] == 0 and steps == 0:
                 return False
             else:
-                steps=max(nums[i],steps)
+                steps = max(nums[i], steps)
         return True

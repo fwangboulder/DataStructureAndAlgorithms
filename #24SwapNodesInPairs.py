@@ -22,7 +22,9 @@ Hide Similar Problems (H) Reverse Nodes in k-Group
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def swapPairs(self, head):
         """
         :type head: ListNode
@@ -30,13 +32,13 @@ class Solution(object):
         """
         if not head or not head.next:
             return head
-        pre=dummy=ListNode(0)
-        dummy.next=head.next
+        pre = dummy = ListNode(0)
+        dummy.next = head.next
         while head and head.next:
-            pre.next=head.next
-            q=head.next
-            head.next=q.next
-            q.next=head
-            pre=head
-            head=head.next
+            pre.next = head.next
+            q = head.next
+            head.next = q.next
+            q.next = head
+            pre = head
+            head = head.next
         return dummy.next

@@ -20,9 +20,11 @@ Hide Company Tags LinkedIn Microsoft
 Hide Tags Backtracking
 Hide Similar Problems (M) Next Permutation (M) Permutations II (M) Permutation Sequence (M) Combinations
 """
-#dfs
+# dfs
+
 
 class Solution(object):
+
     def permute(self, nums):
         """
         :type nums: List[int]
@@ -36,6 +38,6 @@ class Solution(object):
     def dfs(self, nums, path, res):
         if not nums:
             res.append(path)
-            return # backtracking
+            return  # backtracking
         for i in xrange(len(nums)):
-            self.dfs(nums[:i]+nums[i+1:], path+[nums[i]], res)       
+            self.dfs(nums[:i] + nums[i + 1:], path + [nums[i]], res)
