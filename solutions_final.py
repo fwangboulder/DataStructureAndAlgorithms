@@ -187,6 +187,18 @@ class TestQ3(unittest.TestCase):
 # Question 4
 
 
+def get_right_node(tree, r):
+    branch = tree[r]
+    right_node = (len(branch) - 1) - branch[::-1].index(1)
+    return right_node
+
+
+def get_left_node(tree, r):
+    branch = tree[r]
+    left_node = branch.index(1)
+    return left_node
+
+
 def question4(T, r, n1, n2):
     """
     :type T: List[List[int]]
@@ -196,38 +208,57 @@ def question4(T, r, n1, n2):
     :rtype: int
     This function returns the lowest common ancestor for n1 and n2.
     """
-    # ancestors list
-    ancestors = [n1, n2]
-    # current ancestor for n1 and n2
-    n1_ancestor = n1
-    n2_ancestor = n2
-    # found res
-    res = False
-    # while not found
-    while not res:
-        # loop T
-        for i, node in enumerate(T):
-            # There is always one common ancestor, root
-            if not n1_ancestor == r:
-                # check if node i is n1's ancestor
-                if node[n1_ancestor] == 1:
-                    n1_ancestor = i
-                    # if node i has already existed in ancestor, res found
-                    if i in ancestors:
-                        res = True
-                        return i
-                    # if not existed, add it to ancestors list
-                    ancestors.append(i)
-            if not n2_ancestor == r:
-                # check if node i is n2's ancestor
-                if node[n2_ancestor] == 1:
-                    n2_ancestor = i
-                    # if node i has already existed in ancestor, res found
-                    if i in ancestors:
-                        res = True
-                        return i
-                    # if not existed, add it to ancestors list
-                    ancestors.append(i)
+
+    if n1 <= len(T) and n2 <= len(T):
+        while not (n1 <= r and n2 >= r or
+                   n1 >= r and n2 <= r):
+            # check if both n1 and n1 less than root, traverse through left
+            # subtree
+            if n1 < r and n2 < r:
+                r = get_left_node(T, r)
+            # check if both n1 and n1 greater than root, traverse through right
+            # subtree
+            elif n1 > r and n2 > r:
+                r = get_right_node(T, r)
+        # if r is not None return r
+        if r is not None:
+            return r
+    else:
+        return None
+    ###Method 2###
+    # The following method has a time complexity O(n) and space complexity O(V).
+    # # ancestors list
+    # ancestors = [n1, n2]
+    # # current ancestor for n1 and n2
+    # n1_ancestor = n1
+    # n2_ancestor = n2
+    # # found res
+    # res = False
+    # # while not found
+    # while not res:
+    #     # loop T
+    #     for i, node in enumerate(T):
+    #         # There is always one common ancestor, root
+    #         if not n1_ancestor == r:
+    #             # check if node i is n1's ancestor
+    #             if node[n1_ancestor] == 1:
+    #                 n1_ancestor = i
+    #                 # if node i has already existed in ancestor, res found
+    #                 if i in ancestors:
+    #                     res = True
+    #                     return i
+    #                 # if not existed, add it to ancestors list
+    #                 ancestors.append(i)
+    #         if not n2_ancestor == r:
+    #             # check if node i is n2's ancestor
+    #             if node[n2_ancestor] == 1:
+    #                 n2_ancestor = i
+    #                 # if node i has already existed in ancestor, res found
+    #                 if i in ancestors:
+    #                     res = True
+    #                     return i
+    #                 # if not existed, add it to ancestors list
+    #                 ancestors.append(i)
 # test
 
 
@@ -341,26 +372,17 @@ class TestQ5(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
-##########################
-#Here is the explaination#####
 # # TechnicalInterviewPractice
 # Technical Interview Practice
-#
+# 
 # # Question 1
-# Given two strings s and t, determine whether some anagram of t is a substring
-# of s. For example: if s = "udacity" and t = "ad", then the function returns True.
-#  Your function definition should look like: question1(s, t) and return a boolean
-#   True or False.
+# Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 #
 # # Question 2
-# Given a string a, find the longest palindromic substring contained in a.
-# Your function definition should look like question2(a), and return a string.
+# Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
 #
 # # Question 3
-# Given an undirected graph G, find the minimum spanning tree within G. A
-# minimum spanning tree connects all vertices in a graph with the smallest
-# possible total weight of edges. Your function should take in and return
-# an adjacency list structured like this:
+# Given an undirected graph G, find the minimum spanning tree within G. A minimum spanning tree connects all vertices in a graph with the smallest possible total weight of edges. Your function should take in and return an adjacency list structured like this:
 #
 # {'A': [('B', 2)],
 #  'B': [('A', 2), ('C', 5)],
@@ -368,18 +390,7 @@ if __name__ == "__main__":
 # Vertices are represented as unique strings.
 #
 # # Question 4
-# Find the least common ancestor between two nodes on a binary search tree.
-# The least common ancestor is the farthest node from the root that is an ancestor
-#  of both nodes. For example, the root is a common ancestor of all nodes on the
-#  tree, but if both nodes are descendents of the root's left child, then that
-#  left child might be the lowest common ancestor. You can assume that both nodes
-#   are in the tree, and the tree itself adheres to all BST properties. The
-#   function definition should look like question4(T, r, n1, n2), where T is the
-#    tree represented as a matrix, where the index of the list is equal to the
-#    integer stored in that node and a 1 represents a child node, r is a
-#    non - negative integer representing the root, and n1 and n2 are
-#    non - negative integers representing the two nodes in no particular order.
-#    For example, one test case might be
+# Find the least common ancestor between two nodes on a binary search tree. The least common ancestor is the farthest node from the root that is an ancestor of both nodes. For example, the root is a common ancestor of all nodes on the tree, but if both nodes are descendents of the root's left child, then that left child might be the lowest common ancestor. You can assume that both nodes are in the tree, and the tree itself adheres to all BST properties. The function definition should look like question4(T, r, n1, n2), where T is the tree represented as a matrix, where the index of the list is equal to the integer stored in that node and a 1 represents a child node, r is a non - negative integer representing the root, and n1 and n2 are non - negative integers representing the two nodes in no particular order. For example, one test case might be
 #
 # question4([[0, 1, 0, 0, 0],
 #            [0, 0, 0, 0, 0],
@@ -392,15 +403,9 @@ if __name__ == "__main__":
 # and the answer would be 3.
 #
 # # Question 5
-# Find the element in a singly linked list that's m elements from the end.
- # For example, if a linked list has 5 elements, the 3rd element from the end is
- # the 3rd element. The function definition should look like question5(ll, m),
- # where ll is the first node of a linked list and m is the
- # "mth number from the end". You should copy / paste the Node class below to
- #  use as a representation of a node in the linked list. Return the value of
- #  the node at that position.
+# Find the element in a singly linked list that's m elements from the end. For example, if a linked list has 5 elements, the 3rd element from the end is the 3rd element. The function definition should look like question5(ll, m), where ll is the first node of a linked list and m is the "mth number from the end". You should copy / paste the Node class below to use as a representation of a node in the linked list. Return the value of the node at that position.
 #
-# **********************************************************
+# ********************************************************************************************************************
 #
 # Q1 Explanation:
 #
@@ -443,7 +448,11 @@ if __name__ == "__main__":
 # In step 2, I need to find minimum weight again and again. Use a heap structure will save time. It is better to reformat the input dictionary value as (weight, node1, node2) format. By applying a heapify function to usable_edges, heappop will always give the minimum weight together with two connected nodes, and heappush will always keep the usable_edges keep the heap structure. The time complexity is O(Elong(V)), where V is the number of nodes and E is the number of edges. The space complexity is O(V).
 #
 # Q4 Explanation:
-#
+# The first method has made the best use of binary search tree property: the root is smaller than
+# all children in the left tree and bigger than all the children in the right tree. A recursion Method
+# has been used if both n1 and n2 is in the left subtree  or in the right subtree, else return the root.
+# The time complexity is O(logV) and the time complexity is O(1).
+# For method 2 (I have set it as comments):
 # T is the tree represented as a matrix, where the index of the list is equal to the integer stored in that node and a 1 represents a child node. This means once we found node[n] == 1, this mode is the ancestor of n. First, I create an ancestor list with starting value n1, n2. Then I loop T to check whether node[n1] == 1, node[n2] == 1, respectively. If so, check if this node index has already been stored in ancestor list. If existed, return the index. If not existed, add the node index to ancestor list.
 # The time complexity is O(n) and the space complexity is O(V), where V is the number of nodes..
 #
