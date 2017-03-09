@@ -22,6 +22,12 @@ class Solution(object):
         :type haystack: str
         :type needle: str
         :rtype: int
+        This function returns the first index of the target string in source string.
+        The edge condition: 1)if needle is empty, return 0; 2) if needle not existed,
+        return -1.
+        Normal condtion: Loop haystack and check if it equals to the target string.
+        This method has a time complexity of O(mn) and a space complexity of O(1).
+        If I use python split function, the code will become really easy. 
         """
 
         if needle == '':
