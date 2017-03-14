@@ -27,24 +27,49 @@ Hide Tags Array Backtracking Bit Manipulation
 Hide Similar Problems (M) Generalized Abbreviation
 backpacking
 """
+import unittest
 
 
 class Solution(object):
 
-    def subsets(self, nums):
+    def subsets2(self, nums):
         """
         :type nums: List[int]
         :rtype: List[List[int]]
-        """
 
+        this function produces all possible subsets of nums.
+        """
+        res = []
         nums.sort()
-        ans, stack, x, n = [[]], [], 0, len(nums)
-        while True:
-            if x < n:
-                stack += [(x, nums[x])]
-                ans += [zip(*stack)[1]]
-                x += 1
-            elif stack:
-                x = stack.pop()[0] + 1
-            else:
-                return ans
+        self.dfs(nums, 0, [], res)
+        return res
+
+    def dfs(self, nums, index, path, res):
+        res.append(path)
+        for i in xrange(index, len(nums)):
+            if i != index and nums[i] == nums[i - 1]:
+                continue
+            self.dfs(nums, i + 1, path + [nums[i]], res)
+
+
+test = Solution()
+
+
+class Testsubsets(unittest.TestCase):
+
+    def test_subsets2(self):
+        self.assertEqual(sorted(test.subsets2([1, 2, 3])), sorted([
+            [3],
+            [1],
+            [2],
+            [1, 2, 3],
+            [1, 3],
+            [2, 3],
+            [1, 2],
+            []
+        ]))
+        self.assertEqual(sorted(test.subsets2([])), sorted([[]]))
+        self.assertEqual(sorted(test.subsets2([1])), sorted([[1], []]))
+
+if __name__ == "__main__":
+    unittest.main()
