@@ -22,6 +22,7 @@ class Solution(object):
         1. Start: []
         2. Put in each elements: [1], [2], [3]
         3. Including the element and get all other possible subsets. This can be achieved using a recursion method.
+        Time complexity is O(2^n) and space complexity is O(n), where n is the length of nums.
         """
         nums.sort()
         res=[]
@@ -42,6 +43,7 @@ class Solution(object):
         Construction: a res array as the result.
         Start with [], then add each element (no duplicate)
         Then including each element and find all possible subsets: recursion, depth first search
+        Time complexity is O(2^n) and space complexity is O(n), where n is the length of nums.
 
         """
         res=[]
