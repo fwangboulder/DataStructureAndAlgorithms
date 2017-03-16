@@ -27,6 +27,10 @@ First Bad Version (#278)
 Given n versions [1,...,n], find the first bad version.
 API calls: bool isBadVersion(version), minimize the number of calls for this API.
 
+Find Peak Element(#162)
+Find the element that is greater than its neighbors. Assuming num[-1] and num[n] is the minmum.
+input array where num[i]!=nums[i+1]
+
 """
 
 
@@ -213,6 +217,33 @@ class Solution(object):
         else:
             return end
 
+    def findPeakElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        Find a peak. Use two pointers, start=0, end=len(nums)-1. Check if nums[mid] is a peak.
+        If not, check which side might has a peak.
+        """
+        if len(nums) == 0:
+            return -1
+        if len(nums) == 1:
+            return 0
+
+        start = 0
+        end = len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            if nums[mid] > nums[mid - 1] and nums[mid] > nums[mid + 1]:
+                return mid
+            elif nums[mid] > nums[mid - 1]:
+                start = mid
+            else:
+                end = mid
+        if nums[start] < nums[end]:
+            return end
+        else:
+            return start
+
 
 # test
 case = Solution()
@@ -244,6 +275,11 @@ class test(unittest.TestCase):
         self.assertEqual(case.searchMatrix(
             [[1, 2, 3], [2, 3, 4], [3, 4, 5]], 6), False)
         self.assertEqual(case.searchMatrix([[]], 6), False)
+
+    def test_findPeakElement(self):
+        self.assertEqual(case.findPeakElement([1, 2, 1]), 1)
+        self.assertEqual(case.findPeakElement([5, 2, 1]), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
