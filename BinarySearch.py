@@ -23,6 +23,10 @@ Search a 2D Matrix II (#240)
 Given a 2D matrix: integers in each row are sorted for each row and each column, which means the
 first integer might be smaller than the last integer in previous row.
 
+First Bad Version (#278)
+Given n versions [1,...,n], find the first bad version.
+API calls: bool isBadVersion(version), minimize the number of calls for this API.
+
 """
 
 
@@ -183,6 +187,32 @@ class Solution(object):
             else:
                 col += 1
         return False
+
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        This function returns the first bad version. To find the first one, I will
+        use two pointers, (start=0, end=n-1). Check if mid is a bad version. If so,
+        the right half of the versions can be ignored and if mid is a good version, the left half
+        of the versions can be ignored.
+        The time complexity is O(logn) and the space complexity is O(1)
+        """
+        if n == 0:
+            return 0
+        start = 1
+        end = n
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            if isBadVersion(mid):
+                end = mid
+            else:
+                start = mid
+        if isBadVersion(start):
+            return start
+        else:
+            return end
+
 
 # test
 case = Solution()
