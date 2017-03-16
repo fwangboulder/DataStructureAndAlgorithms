@@ -34,10 +34,18 @@ input array where num[i]!=nums[i+1]
 Find Minimum in Rotated Sorted Array (#153).
 An array sorted in ascending order is rotated at some pivot unknown to you beforehand.
 
+
 Search in Rotated Sorted Array (#33)
 
 An array sorted in ascending order is rotated at some pivot unknown to you beforehand
+the array has no duplicate.
 return the index of a target, if not found, return -1
+
+Search in Rotated Sorted Array(#81)
+An array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+the array might have duplicate.
+return if the target is in the array.
+
 
 
 """
@@ -334,6 +342,51 @@ class Solution(object):
         else:
             return -1
 
+    def search2(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: bool
+        This function returns whether nums contains target.
+        Since nums might contain duplicate, let me check a case [3,3,1,2,3].
+        You can see that the first and last elements are the equal.
+        Thus, if nums[mid]>nums[start], then the left side is sorted
+        if nums[mid]<nums[start], then the right side is sorted
+        if nums[mid]==nums[start], then start+=1 to avoid the duplicate element.
+        The time complexity is O(logn) and the space complexity is O(1)
+        """
+        if not nums:
+            return False
+        if len(nums) == 1:
+            if nums[0] == target:
+                return True
+            else:
+                return False
+        start = 0
+        end = len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            if nums[mid] == target:
+                return True
+            elif nums[mid] > nums[start]:
+                # the left side is sorted
+                if nums[start] <= target < nums[mid]:
+                    end = mid
+                else:
+                    start = mid
+            elif nums[mid] == nums[start]:
+                while nums[mid] == nums[start] and start < len(nums) - 1:
+                    start += 1
+            else:
+                if nums[mid] < target <= nums[end]:
+                    start = mid
+                else:
+                    end = mid
+        if nums[start] == target or nums[end] == target:
+            return True
+        else:
+            return False
+
 
 # test
 case = Solution()
@@ -379,6 +432,11 @@ class test(unittest.TestCase):
         self.assertEqual(case.search([2], 1), -1)
         self.assertEqual(case.search([3, 1, 2], 2), 2)
         self.assertEqual(case.search([1], 1), 0)
+
+    def test_search2(self):
+        self.assertEqual(case.search2([2], 1), False)
+        self.assertEqual(case.search2([1, 3, 5], 1), True)
+        self.assertEqual(case.search2([3, 3, 2, 3], 2), True)
 
 
 if __name__ == "__main__":
