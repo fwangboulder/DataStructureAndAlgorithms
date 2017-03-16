@@ -31,6 +31,10 @@ Find Peak Element(#162)
 Find the element that is greater than its neighbors. Assuming num[-1] and num[n] is the minmum.
 input array where num[i]!=nums[i+1]
 
+Find Minimum in Rotated Sorted Array (#153).
+An array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+
 """
 
 
@@ -244,6 +248,40 @@ class Solution(object):
         else:
             return start
 
+    def findMin(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        This function provides the minimum of the rotated array. One solution can
+        be loop the array and find a value nums[i], so that nums[i]<nums[i+1] and
+        nums[i]<nums[i-1]. The edge condition is the minimum is the first element or
+        the last element.
+        The time complexity is O(n) and the space complexity is O(1).
+        If I want to reduce the time complexity. I can use two pointers and perfom the binary
+        search method. start=0, end=len(nums)-1, mid=start+(end-start)/2
+        nums[start]<nums[mid], then start=mid
+        nums[start]>nums[mid], then  end=mid
+        The time complexity is O(logn) and the space complexity is O(1)
+
+        """
+        if not nums:
+            return 'nums is empty'
+        start = 0
+        end = len(nums) - 1
+        # only one element or no rotation
+        if nums[0] <= nums[-1]:
+            return nums[0]
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            if nums[mid] > nums[start]:
+                start = mid
+            else:
+                end = mid
+        if nums[start] < nums[end]:
+            return nums[start]
+        else:
+            return nums[end]
+
 
 # test
 case = Solution()
@@ -279,6 +317,11 @@ class test(unittest.TestCase):
     def test_findPeakElement(self):
         self.assertEqual(case.findPeakElement([1, 2, 1]), 1)
         self.assertEqual(case.findPeakElement([5, 2, 1]), 0)
+
+    def test_findMin(self):
+        self.assertEqual(case.findMin([1, 2, 3]), 1)
+        self.assertEqual(case.findMin([3, 1, 2]), 1)
+        self.assertEqual(case.findMin([1]), 1)
 
 
 if __name__ == "__main__":
