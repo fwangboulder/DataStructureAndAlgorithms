@@ -119,6 +119,8 @@ class test(unittest.TestCase):
         self.assertEqual(case.searchInsert([1], 2), 1)
         self.assertEqual(case.searchInsert([2], 2), 0)
         self.assertEqual(case.searchInsert([1, 2, 4], 3), 2)
+        self.assertEqual(case.searchInsert([1, 2, 2, 4], 2), 1)
+
 
 
 if __name__ == "__main__":
