@@ -47,11 +47,17 @@ class Tree(object):
         """
         :type root: TreeNode
         :rtype: List[int]
+
+        time complexity O(n) and space complexity O(n).
         """
         if root is None:
             return []
-        return [root.val] + self.preorderTraversal(root.left) \
-                          + self.preorderTraversal(root.right)
+        # divide
+        left = self.preorderTraversal(root.left)
+        right = self.preorderTraversal(root.right)
+
+        # conquer
+        return [root.val] + left + right
 
     def preorderTraversalStack(self, root):
         if not root:
@@ -71,22 +77,59 @@ class Tree(object):
         """
         :type root: TreeNode
         :rtype: List[int]
+        this function return the inorder transversal of a tree.
+
         """
         if root is None:
             return []
-        return self.inorderTraversal(root.left) + [root.val] \
-            + self.inorderTraversal(root.right)
+
+        # divide
+        left = self.inorderTraversal(root.left)
+        right = self.inorderTraversal(root.right)
+
+        # conquer
+        return left + [root.val] + right
+
+    def inorderTraversalStack(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        this function return the inorder transversal of a tree.
+
+        """
+        if not root:
+            return []
+        stack = []
+        inorder = []
+        current = root
+        done = 0
+        while not done:
+            if current:
+                stack.append(current)
+                current = current.left
+            else:
+                if stack:
+                    current = stack.pop()
+                    inorder.append(current.val)
+                    current = current.right
+                else:
+                    done = 1
+
+        return inorder
 
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        if not root:
+        if root is None:
             return []
-        return self.postorderTraversal(
-            root.left) + self.postorderTraversal(root.right) + [root.val]
+        # divide
+        left = self.postorderTraversal(root.left)
+        right = self.postorderTraversal(root.right)
 
+        # conquer
+        return left + right + [root.val]
 # create a tree.
 
 root = None
@@ -117,6 +160,11 @@ class testTree(unittest.TestCase):
 
     def test_inorderTraversal(self):
         self.assertEqual(tree.inorderTraversal(root), [1, 2, 3, 4, 6, 7, 8])
+
+    def test_inorderTraversalStack(self):
+        self.assertEqual(
+            tree.inorderTraversalStack(root), [
+                1, 2, 3, 4, 6, 7, 8])
 
     def test_preorderTraversal(self):
         self.assertEqual(tree.preorderTraversal(root), [1, 2, 3, 4, 7, 6, 8])
