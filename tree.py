@@ -43,6 +43,38 @@ class Tree(object):
             node.right = self.insert(node.right, x)
         return node
 
+    def tranversePre(self, root, res):
+        if not root:
+            return
+        res.append(root.val)
+        self.tranversePre(root.left, res)
+        self.tranversePre(root.right, res)
+
+    def tranverseIn(self, root, res):
+        if not root:
+            return
+        self.tranverseIn(root.left, res)
+        res.append(root.val)
+        self.tranverseIn(root.right, res)
+
+    def tranversePost(self, root, res):
+        if not root:
+            return
+        self.tranversePost(root.left, res)
+        self.tranversePost(root.right, res)
+        res.append(root.val)
+
+    def preorderTraversalRecursion(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+
+        time complexity O(n) and space complexity O(n).
+        """
+        res = []
+        self.tranversePre(root, res)
+        return res
+
     def preorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -136,6 +168,17 @@ class Tree(object):
 
         return inorder
 
+    def inorderTraversalRecursion(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+
+        time complexity O(n) and space complexity O(n).
+        """
+        res = []
+        self.tranverseIn(root, res)
+        return res
+
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -201,6 +244,16 @@ class Tree(object):
                 break
         return postorder
 
+    def postorderTraversalRecursion(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+
+        time complexity O(n) and space complexity O(n).
+        """
+        res = []
+        self.tranversePost(root, res)
+        return res
 
 # create a tree.
 
@@ -238,6 +291,11 @@ class testTree(unittest.TestCase):
             tree.inorderTraversalStack(root), [
                 1, 2, 3, 4, 6, 7, 8])
 
+    def test_inorderTraversalRecursion(self):
+        self.assertEqual(
+            tree.inorderTraversalRecursion(root), [
+                1, 2, 3, 4, 6, 7, 8])
+
     def test_preorderTraversal(self):
         self.assertEqual(tree.preorderTraversal(root), [1, 2, 3, 4, 7, 6, 8])
 
@@ -246,12 +304,22 @@ class testTree(unittest.TestCase):
             tree.preorderTraversalStack(root), [
                 1, 2, 3, 4, 7, 6, 8])
 
+    def test_preorderTraversalRecursion(self):
+        self.assertEqual(
+            tree.preorderTraversalRecursion(root), [
+                1, 2, 3, 4, 7, 6, 8])
+
     def test_postorderTraversal(self):
         self.assertEqual(tree.postorderTraversal(root), [6, 8, 7, 4, 3, 2, 1])
 
     def test_postorderTraversalStack(self):
         self.assertEqual(
             tree.postorderTraversalStack(root), [
+                6, 8, 7, 4, 3, 2, 1])
+
+    def test_postorderTraversalRecursion(self):
+        self.assertEqual(
+            tree.postorderTraversalRecursion(root), [
                 6, 8, 7, 4, 3, 2, 1])
 
 
