@@ -60,6 +60,17 @@ class Tree(object):
         return [root.val] + left + right
 
     def preorderTraversalStack(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+
+        1) Create an empty stack nodeStack and push root node to stack.
+        2) Do following while nodeStack is not empty.
+            a) Pop an item from stack and print it.
+            b) Push right child of popped item to stack
+            c) Push left child of popped item to stack
+
+        """
         if not root:
             return []
         stack = [root]
@@ -96,6 +107,14 @@ class Tree(object):
         :rtype: List[int]
         this function return the inorder transversal of a tree.
 
+        1) Create an empty stack S.
+        2) Initialize current node as root
+        3) Push the current node to S and set current = current->left until current is NULL
+        4) If current is NULL and stack is not empty then
+            a) Pop the top item from stack.
+            b) Print the popped item, set current = popped_item->right
+            c) Go to step 3.
+        5) If current is NULL and stack is empty then we are done.
         """
         if not root:
             return []
@@ -130,6 +149,59 @@ class Tree(object):
 
         # conquer
         return left + right + [root.val]
+
+    def postorderTraversalStack(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+
+        1.1 Create an empty stack
+        2.1 Do following while root is not NULL
+            a) Push root's right child and then root to stack.
+            b) Set root as root's left child.
+        2.2 Pop an item from stack and set it as root.
+            a) If the popped item has a right child and the right child
+                is at top of stack, then remove the right child from stack,
+                push the root back and set root as root's right child.
+            b) Else print root's data and set root as NULL.
+       2.3 Repeat steps 2.1 and 2.2 while stack is not empty.
+        """
+        def peek(stack):
+            if len(stack) > 0:
+                return stack[-1]
+            return None
+        # Check for empty tree
+        if not root:
+            return []
+        done = 0
+        stack = []
+        postorder = []
+        current = root
+        while not done:
+            while current:
+                # Push root's right child and then root to stack
+                if current.right:
+                    stack.append(current.right)
+                stack.append(current)
+                # set current as current's left child
+                current = current.left
+            # Pop an item from stack and set it as current.
+            current = stack.pop()
+            # if the popped item has a right child
+            # and the right child is not processed yet, then make sure the
+            # right child is processed before the root
+            if current.right and peek(stack) == current.right:
+                stack.pop()  # remove the right child
+                stack.append(current)  # push current back to the stack
+                current = current.right
+            else:
+                postorder.append(current.val)
+                current = None
+            if not stack:
+                break
+        return postorder
+
+
 # create a tree.
 
 root = None
@@ -176,6 +248,11 @@ class testTree(unittest.TestCase):
 
     def test_postorderTraversal(self):
         self.assertEqual(tree.postorderTraversal(root), [6, 8, 7, 4, 3, 2, 1])
+
+    def test_postorderTraversalStack(self):
+        self.assertEqual(
+            tree.postorderTraversalStack(root), [
+                6, 8, 7, 4, 3, 2, 1])
 
 
 if __name__ == "__main__":
