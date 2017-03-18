@@ -15,6 +15,10 @@ Swap Nodes in Pairs (#24)
 
 Merge K Sorted Linked Lists (#23)
 
+Partition List (#86)
+Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+You should preserve the original relative order of the nodes in each of the two partitions.
+
 """
 
 # Definition for singly-linked list.
@@ -149,6 +153,29 @@ class Solution(object):
             prev = prev.next.next
         return dummy.next
 
+    def partition(self, head, x):
+        """
+        :type head: ListNode
+        :type x: int
+        :rtype: ListNode
+        """
+        left=ListNode(0)
+        right=ListNode(0)
+        cur1=left
+        cur2=right
+        while head:
+            if head.val<x:
+                cur1.next=ListNode(head.val)
+                head=head.next
+                cur1=cur1.next
+            else:
+                cur2.next=ListNode(head.val)
+                head=head.next
+                cur2=cur2.next
+
+        if right.next:
+            cur1.next=right.next
+        return left.next
 
 l1 = ListNode(1)
 l1.next = ListNode(2)
