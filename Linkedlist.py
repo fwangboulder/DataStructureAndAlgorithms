@@ -61,6 +61,27 @@ class Solution(object):
             tmp.next = l2
         return dummy.next
 
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        l = len(lists)
+        if l == 0:
+            return []
+        while l > 1:
+            tmp_res = []
+            for i in range(0, l, 2):
+                if i + 1 < l:
+
+                    tmp_res.append(self.mergeTwoLists(lists[i], lists[i + 1]))
+                else:
+                    tmp_res.append(lists[i])
+            lists = tmp_res
+            l = len(lists)
+        if l == 1:
+            return lists[0]
+
     def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode
