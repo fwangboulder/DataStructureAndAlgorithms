@@ -15,6 +15,9 @@ Given a binary tree, return the inorder traversal of its node's value.
 Binary Tree Postorder Traversal(#145)
 Given a binary tree, return the inorder traversal of its node's value.
 
+Maximum Depth of Binary Tree(#104)
+
+Balanced Binary Tree (#110)
 """
 # Definition for a binary tree node.
 
@@ -254,6 +257,52 @@ class Tree(object):
         res = []
         self.tranversePost(root, res)
         return res
+
+#################################
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if root is None:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+
+    def maxDepthRecursion(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        d = []
+        self.dfs(root, 0, d)
+        return max(d)
+
+    def dfs(self, root, depth, d):
+        if not root:
+            d.append(depth)
+            return
+        else:
+            self.dfs(root.left, depth + 1, d)
+            self.dfs(root.right, depth + 1, d)
+############################################
+
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        def height(node):
+            if not node:
+                return 0
+
+            return max(height(node.left), height(node.right)) + 1
+        if not root:
+            return True
+
+        if abs(height(root.left) - height(root.right)) <= 1:
+            return self.isBalanced(root.left) and self.isBalanced(root.right)
+        return False
+
 
 # create a tree.
 
