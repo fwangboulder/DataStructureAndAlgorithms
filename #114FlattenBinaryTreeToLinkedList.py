@@ -60,3 +60,20 @@ class Solution(object):
                 elif stack:
                     root.right = stack.pop()
                 root = root.right
+
+    def __init__(self):
+        self.prev = None
+
+    def flatten(self, root):
+        """
+        :type root: TreeNode
+        :rtype: void Do not return anything, modify root in-place instead.
+        """
+        if not root:
+            return
+        self.flatten(root.right)
+        self.flatten(root.left)
+
+        root.right = self.prev
+        root.left = None
+        self.prev = root
