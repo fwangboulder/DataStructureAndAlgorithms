@@ -49,6 +49,7 @@ class Solution(object):
             pre = cur
             cur = curnext
         cur1, cur2 = head1, pre
+        #connect the two head
         while cur2:
             next1, next2 = cur1.next, cur2.next
             cur1.next = cur2
