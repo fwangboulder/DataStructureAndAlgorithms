@@ -14,7 +14,34 @@ Hide Company Tags Zenefits
 Hide Tags Backtracking
 Hide Similar Problems (H) N-Queens
 """
+class Solution(object):
+    def totalNQueens(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
 
+        path=[]
+        res=[]
+        index=0
+        nums=[-1]*n
+        self.dfs(nums,path,res,index)
+        return len(res)
+    def dfs(self,nums,path,res,index):
+        if index==len(nums):
+
+            res.append(path)
+            return
+        for i in xrange(len(nums)):
+            nums[index]=i
+            if self.isValid(nums,index):
+                tmp="."*len(nums)
+                self.dfs(nums,path+[tmp[:i]+"Q"+tmp[i+1:]],res,index+1)
+    def isValid(self,nums,index):
+        for i in xrange(index):
+            if abs(nums[index]-nums[i])==index-i or nums[i]==nums[index]:
+                return False
+        return True
 
 class Solution(object):
 
