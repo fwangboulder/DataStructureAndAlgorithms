@@ -43,3 +43,47 @@ class Solution(object):
                     p = [start] + p
                     r.append(p)
         return r
+#889ms
+class Solution(object):
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+
+        path=[]
+        res=[]
+        self.dfs(n,k,res,path,1)
+        return res
+    def dfs(self,n,k,res,path, depth):
+        if k==0:
+            res.append(path)
+            return
+        for i in xrange(depth,n+1):
+            self.dfs(n,k-1,res,path+[i],i+1)
+#255ms
+class Solution(object):
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+
+        ans = []
+        stack = []
+        x = 1
+        while True:
+
+            l = len(stack)
+            if l == k:
+                ans.append(stack[:])
+            if l == k or x > n - k + l + 1:
+                if not stack:
+                    return ans
+                x = stack.pop() + 1
+            else:
+                stack.append(x)
+                x += 1
+            
