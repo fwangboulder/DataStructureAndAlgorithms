@@ -69,6 +69,14 @@ class Solution(object):
         :type n: int
         :type k: int
         :rtype: List[List[int]]
+        I think n-x+1 < k-l is easier to understand.
+
+        One combination has k numbers, and currently we already have l numbers,
+        so we need to find another k-l numbers. Since we insert the numbers into
+         stack in the ascending order, we want to make sure that there are enough
+         larger numbers to be inserted. From x to n, there are n-x+1 numbers
+         that are larger than the numbers in the current stack. So if n-x+1 < k-l,
+          it means that not enough larger numbers to be inserted, so we track back.
         """
 
         ans = []
@@ -86,4 +94,3 @@ class Solution(object):
             else:
                 stack.append(x)
                 x += 1
-            
