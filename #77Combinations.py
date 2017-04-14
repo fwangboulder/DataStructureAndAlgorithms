@@ -87,7 +87,7 @@ class Solution(object):
             l = len(stack)
             if l == k:
                 ans.append(stack[:])
-            if l == k or x > n - k + l + 1:
+            if l == k or n-x+1< k -l:
                 if not stack:
                     return ans
                 x = stack.pop() + 1
